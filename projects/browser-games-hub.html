@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browser Games Hub - Portfolio Project</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="../index.html" class="nav-brand">← Back to Portfolio</a>
+        </div>
+    </nav>
+
+    <main class="project-detail">
+        <div class="container">
+            <header class="project-header">
+                <h1>🎮 Browser Games Hub</h1>
+                <p class="project-subtitle">Responsive gaming platform with 10+ browser games, user authentication, and leaderboards</p>
+                <div class="project-links">
+                    <a href="../games-website/index.html" class="btn btn-primary" target="_blank">View Live Demo</a>
+                    <a href="https://github.com/yourusername/browser-games-hub" class="btn btn-secondary">View Code</a>
+                </div>
+            </header>
+
+            <section class="project-overview">
+                <div class="tech-stack">
+                    <h3>Technologies Used</h3>
+                    <div class="tech-tags">
+                        <span class="tech-tag">HTML5</span>
+                        <span class="tech-tag">CSS3</span>
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">Canvas API</span>
+                        <span class="tech-tag">LocalStorage</span>
+                        <span class="tech-tag">Responsive Design</span>
+                    </div>
+                </div>
+
+                <div class="project-description">
+                    <h3>Project Overview</h3>
+                    <p>A complete browser-based gaming platform featuring 10 classic games with modern web technologies. The platform includes user authentication, score tracking, leaderboards, and responsive design for all devices.</p>
+                </div>
+            </section>
+
+            <section class="project-features">
+                <h3>Key Features</h3>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <h4>🎯 10 Classic Games</h4>
+                        <p>Snake, Tic Tac Toe, Flappy Bird, Tetris, Pong, Breakout, Memory Game, Maze Runner, 2048, and Space Invaders</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>👤 User System</h4>
+                        <p>Login/registration with localStorage persistence and personalized experience</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🏆 Leaderboards</h4>
+                        <p>Track high scores and play counts across all games with ranking system</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>📱 Responsive Design</h4>
+                        <p>Mobile-first approach with touch controls and adaptive layouts</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>📊 Analytics</h4>
+                        <p>Play counter tracking and "Top 3 Most Played" section</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>💾 Progress Saving</h4>
+                        <p>Automatic save system using browser localStorage</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="project-screenshots">
+                <h3>Screenshots</h3>
+                <div class="screenshots-grid">
+                    <div class="screenshot">
+                        <img src="../Assets/project_img400x250/GameHub.png" alt="Homepage">
+                        <p>Homepage with responsive game grid and top games section</p>
+                    </div>
+                    <div class="screenshot">
+                        <img src="../games-website/games/snake.html" alt="Snake Game" onclick="window.open('../games-website/games/snake.html', '_blank')" style="cursor: pointer;">
+                        <p>Snake game with canvas rendering and score tracking - Click to play!</p>
+                    </div>
+                    <div class="screenshot">
+                        <img src="../Assets/project_img400x250/GameHub.png" alt="Games Collection">
+                        <p>Complete collection of 9 playable browser games</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="technical-details">
+                <h3>Technical Implementation</h3>
+                <div class="implementation-grid">
+                    <div class="implementation-card">
+                        <h4>Frontend Architecture</h4>
+                        <ul>
+                            <li>Vanilla JavaScript with modular game system</li>
+                            <li>HTML5 Canvas for game rendering</li>
+                            <li>CSS Grid and Flexbox for responsive layouts</li>
+                            <li>Event-driven architecture for user interactions</li>
+                        </ul>
+                    </div>
+                    <div class="implementation-card">
+                        <h4>Game Engine</h4>
+                        <ul>
+                            <li>Custom game loop with requestAnimationFrame</li>
+                            <li>Collision detection algorithms</li>
+                            <li>Keyboard and mouse input handling</li>
+                            <li>Score tracking and persistence system</li>
+                        </ul>
+                    </div>
+                    <div class="implementation-card">
+                        <h4>Data Management</h4>
+                        <ul>
+                            <li>LocalStorage for user data and game progress</li>
+                            <li>JSON serialization for complex data structures</li>
+                            <li>Real-time leaderboard updates</li>
+                            <li>Play counter analytics</li>
+                        </ul>
+                    </div>
+                    <div class="implementation-card">
+                        <h4>UI/UX Design</h4>
+                        <ul>
+                            <li>Modal system for games and user interactions</li>
+                            <li>Gradient backgrounds and modern styling</li>
+                            <li>Hover effects and smooth transitions</li>
+                            <li>Mobile-optimized touch controls</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="project-challenges">
+                <h3>Challenges & Solutions</h3>
+                <div class="challenges-grid">
+                    <div class="challenge-card">
+                        <h4>Cross-Device Compatibility</h4>
+                        <p><strong>Challenge:</strong> Ensuring games work smoothly across different screen sizes and input methods.</p>
+                        <p><strong>Solution:</strong> Implemented responsive canvas sizing and dual input support (keyboard + touch).</p>
+                    </div>
+                    <div class="challenge-card">
+                        <h4>Game State Management</h4>
+                        <p><strong>Challenge:</strong> Managing multiple game states and preventing memory leaks.</p>
+                        <p><strong>Solution:</strong> Created a centralized game manager with proper cleanup and state isolation.</p>
+                    </div>
+                    <div class="challenge-card">
+                        <h4>Performance Optimization</h4>
+                        <p><strong>Challenge:</strong> Maintaining 60fps across all games while handling multiple animations.</p>
+                        <p><strong>Solution:</strong> Used requestAnimationFrame and optimized rendering loops with efficient collision detection.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="project-results">
+                <h3>Results & Impact</h3>
+                <div class="results-stats">
+                    <div class="stat-card">
+                        <h4>10+</h4>
+                        <p>Playable Games</p>
+                    </div>
+                    <div class="stat-card">
+                        <h4>100%</h4>
+                        <p>Mobile Responsive</p>
+                    </div>
+                    <div class="stat-card">
+                        <h4>0</h4>
+                        <p>External Dependencies</p>
+                    </div>
+                    <div class="stat-card">
+                        <h4>Fast</h4>
+                        <p>Loading Speed</p>
+                    </div>
+                </div>
+                <p>This project demonstrates proficiency in vanilla JavaScript, game development concepts, responsive design, and user experience optimization. The platform showcases ability to create engaging interactive applications without relying on external frameworks.</p>
+            </section>
+        </div>
+    </main>
+
+    <script src="../script.js"></script>
+</body>
+</html>

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NLP Content Analyzer | Muhammad Shahzeb Malik</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', sans-serif; background: #f8fafc; }
+        
+        .header { background: linear-gradient(135deg, #667eea, #764ba2); color: white; padding: 2rem 0; text-align: center; }
+        .header h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+        .header p { font-size: 1.1rem; opacity: 0.9; }
+        
+        .container { max-width: 1200px; margin: 0 auto; padding: 2rem 20px; }
+        .tool-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem; }
+        
+        .input-section, .results-section { background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .input-section h2, .results-section h2 { margin-bottom: 1rem; color: #1e293b; }
+        
+        textarea { width: 100%; height: 200px; padding: 1rem; border: 2px solid #e2e8f0; border-radius: 8px; font-family: inherit; resize: vertical; }
+        textarea:focus { outline: none; border-color: #2563eb; }
+        
+        .analyze-btn { background: #2563eb; color: white; padding: 12px 30px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; margin-top: 1rem; width: 100%; }
+        .analyze-btn:hover { background: #1d4ed8; }
+        
+        .metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
+        .metric-card { background: #f1f5f9; padding: 1rem; border-radius: 8px; text-align: center; }
+        .metric-value { font-size: 2rem; font-weight: bold; color: #2563eb; }
+        .metric-label { font-size: 0.9rem; color: #64748b; }
+        
+        .sentiment { padding: 1rem; border-radius: 8px; margin-bottom: 1rem; text-align: center; font-weight: bold; }
+        .sentiment.positive { background: #dcfce7; color: #166534; }
+        .sentiment.negative { background: #fef2f2; color: #dc2626; }
+        .sentiment.neutral { background: #f1f5f9; color: #64748b; }
+        
+        .keywords { margin-top: 1rem; }
+        .keyword-tag { display: inline-block; background: #eff6ff; color: #1e40af; padding: 0.3rem 0.8rem; border-radius: 20px; margin: 0.2rem; font-size: 0.9rem; }
+        
+        .back-link { position: fixed; top: 20px; right: 20px; background: #2563eb; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; z-index: 1000; }
+        
+        .demo-text { background: #eff6ff; padding: 1rem; border-radius: 8px; margin-bottom: 1rem; border-left: 4px solid #2563eb; }
+        .demo-text h4 { color: #1e40af; margin-bottom: 0.5rem; }
+        .demo-text p { color: #64748b; font-size: 0.9rem; cursor: pointer; }
+        .demo-text p:hover { color: #2563eb; }
+    </style>
+</head>
+<body>
+    <a href="../index.html" class="back-link">← Back to Portfolio</a>
+    
+    <header class="header">
+        <h1>🤖 NLP Content Analyzer</h1>
+        <p>Advanced text analysis using Natural Language Processing</p>
+    </header>
+
+    <div class="container">
+        <div class="tool-grid">
+            <div class="input-section">
+                <h2>📝 Input Text</h2>
+                <div class="demo-text">
+                    <h4>Try these sample texts:</h4>
+                    <p onclick="loadSample(1)">→ Positive product review</p>
+                    <p onclick="loadSample(2)">→ Negative feedback</p>
+                    <p onclick="loadSample(3)">→ Neutral business content</p>
+                </div>
+                <textarea id="inputText" placeholder="Enter your text here for analysis..."></textarea>
+                <button class="analyze-btn" onclick="analyzeText()">🔍 Analyze Text</button>
+            </div>
+            
+            <div class="results-section">
+                <h2>📊 Analysis Results</h2>
+                <div id="results">
+                    <p style="color: #64748b; text-align: center; padding: 2rem;">Enter text and click analyze to see results</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="input-section">
+            <h2>🎯 Features Demonstrated</h2>
+            <div class="metrics">
+                <div class="metric-card">
+                    <div class="metric-value">✓</div>
+                    <div class="metric-label">Sentiment Analysis</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">✓</div>
+                    <div class="metric-label">Keyword Extraction</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">✓</div>
+                    <div class="metric-label">Text Statistics</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">✓</div>
+                    <div class="metric-label">Readability Score</div>
+                </div>
+            </div>
+            <p style="color: #64748b; text-align: center;">This demo showcases NLP capabilities. In production, this would connect to advanced ML models for deeper analysis.</p>
+        </div>
+    </div>
+
+    <script>
+        const sampleTexts = {
+            1: "I absolutely love this product! The quality is outstanding and the customer service was exceptional. Highly recommend to anyone looking for a reliable solution. The delivery was fast and the packaging was perfect.",
+            2: "Very disappointed with this purchase. The product arrived damaged and the customer support was unhelpful. Would not recommend this to anyone. Poor quality and overpriced.",
+            3: "This is a standard business solution that meets basic requirements. The features are adequate for most use cases. The pricing is competitive in the current market."
+        };
+        
+        function loadSample(num) {
+            document.getElementById('inputText').value = sampleTexts[num];
+        }
+        
+        function analyzeText() {
+            const text = document.getElementById('inputText').value.trim();
+            if (!text) {
+                alert('Please enter some text to analyze');
+                return;
+            }
+            
+            // Simulate NLP analysis
+            const analysis = performAnalysis(text);
+            displayResults(analysis);
+        }
+        
+        function performAnalysis(text) {
+            const words = text.split(/\s+/).length;
+            const sentences = text.split(/[.!?]+/).length - 1;
+            const characters = text.length;
+            
+            // Simple sentiment analysis simulation
+            const positiveWords = ['love', 'great', 'excellent', 'amazing', 'outstanding', 'perfect', 'recommend', 'fantastic'];
+            const negativeWords = ['hate', 'terrible', 'awful', 'disappointed', 'poor', 'bad', 'worst', 'horrible'];
+            
+            let positiveScore = 0;
+            let negativeScore = 0;
+            
+            const lowerText = text.toLowerCase();
+            positiveWords.forEach(word => {
+                if (lowerText.includes(word)) positiveScore++;
+            });
+            negativeWords.forEach(word => {
+                if (lowerText.includes(word)) negativeScore++;
+            });
+            
+            let sentiment = 'neutral';
+            if (positiveScore > negativeScore) sentiment = 'positive';
+            else if (negativeScore > positiveScore) sentiment = 'negative';
+            
+            // Extract keywords (simple frequency analysis)
+            const wordFreq = {};
+            const cleanWords = text.toLowerCase().match(/\b\w{4,}\b/g) || [];
+            cleanWords.forEach(word => {
+                if (!['this', 'that', 'with', 'have', 'will', 'from', 'they', 'been', 'were', 'said', 'each', 'which', 'their'].includes(word)) {
+                    wordFreq[word] = (wordFreq[word] || 0) + 1;
+                }
+            });
+            
+            const keywords = Object.entries(wordFreq)
+                .sort(([,a], [,b]) => b - a)
+                .slice(0, 8)
+                .map(([word]) => word);
+            
+            const readabilityScore = Math.max(1, Math.min(10, Math.round(10 - (words / sentences))));
+            
+            return {
+                words,
+                sentences,
+                characters,
+                sentiment,
+                keywords,
+                readabilityScore,
+                positiveScore,
+                negativeScore
+            };
+        }
+        
+        function displayResults(analysis) {
+            const resultsDiv = document.getElementById('results');
+            
+            const sentimentClass = analysis.sentiment;
+            const sentimentEmoji = analysis.sentiment === 'positive' ? '😊' : analysis.sentiment === 'negative' ? '😞' : '😐';
+            
+            resultsDiv.innerHTML = `
+                <div class="sentiment ${sentimentClass}">
+                    ${sentimentEmoji} Sentiment: ${analysis.sentiment.toUpperCase()}
+                </div>
+                
+                <div class="metrics">
+                    <div class="metric-card">
+                        <div class="metric-value">${analysis.words}</div>
+                        <div class="metric-label">Words</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">${analysis.sentences}</div>
+                        <div class="metric-label">Sentences</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">${analysis.characters}</div>
+                        <div class="metric-label">Characters</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">${analysis.readabilityScore}/10</div>
+                        <div class="metric-label">Readability</div>
+                    </div>
+                </div>
+                
+                <div class="keywords">
+                    <h4 style="margin-bottom: 0.5rem; color: #1e293b;">🔑 Key Terms:</h4>
+                    ${analysis.keywords.map(keyword => `<span class="keyword-tag">${keyword}</span>`).join('')}
+                </div>
+            `;
+        }
+    </script>
+</body>
+</html>

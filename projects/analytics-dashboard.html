@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Analytics Dashboard | Muhammad Shahzeb Malik</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', sans-serif; background: #f8fafc; }
+        
+        .header { background: linear-gradient(135deg, #1e293b, #334155); color: white; padding: 1.5rem 0; }
+        .nav { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; }
+        .logo { font-size: 1.5rem; font-weight: bold; }
+        .user-info { display: flex; align-items: center; gap: 1rem; }
+        
+        .container { max-width: 1400px; margin: 0 auto; padding: 2rem 20px; }
+        .dashboard-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-bottom: 2rem; }
+        
+        .card { background: white; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); overflow: hidden; }
+        .card-header { padding: 1.5rem; border-bottom: 1px solid #e2e8f0; }
+        .card-header h3 { color: #1e293b; margin-bottom: 0.5rem; }
+        .card-header p { color: #64748b; font-size: 0.9rem; }
+        .card-content { padding: 1.5rem; }
+        
+        .metric-large { text-align: center; }
+        .metric-value { font-size: 3rem; font-weight: bold; color: #2563eb; margin-bottom: 0.5rem; }
+        .metric-change { font-size: 0.9rem; padding: 0.3rem 0.8rem; border-radius: 20px; }
+        .metric-change.positive { background: #dcfce7; color: #166534; }
+        .metric-change.negative { background: #fef2f2; color: #dc2626; }
+        
+        .chart-container { height: 200px; background: #f8fafc; border-radius: 8px; display: flex; align-items: end; justify-content: space-around; padding: 1rem; }
+        .bar { background: #2563eb; border-radius: 4px 4px 0 0; min-height: 20px; width: 30px; margin: 0 2px; transition: all 0.3s; }
+        .bar:hover { background: #1d4ed8; transform: scaleY(1.1); }
+        
+        .progress-bar { background: #e2e8f0; height: 8px; border-radius: 4px; overflow: hidden; margin: 0.5rem 0; }
+        .progress-fill { background: linear-gradient(90deg, #2563eb, #7c3aed); height: 100%; border-radius: 4px; transition: width 0.3s; }
+        
+        .data-table { width: 100%; border-collapse: collapse; }
+        .data-table th, .data-table td { padding: 0.8rem; text-align: left; border-bottom: 1px solid #e2e8f0; }
+        .data-table th { background: #f8fafc; font-weight: 600; color: #374151; }
+        
+        .status-badge { padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.8rem; font-weight: 500; }
+        .status-badge.active { background: #dcfce7; color: #166534; }
+        .status-badge.pending { background: #fef3c7; color: #92400e; }
+        .status-badge.inactive { background: #f3f4f6; color: #6b7280; }
+        
+        .back-link { position: fixed; top: 20px; right: 20px; background: #2563eb; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; z-index: 1000; }
+        
+        .refresh-btn { background: #10b981; color: white; border: none; padding: 0.5rem 1rem; border-radius: 5px; cursor: pointer; font-size: 0.9rem; }
+        .refresh-btn:hover { background: #059669; }
+    </style>
+</head>
+<body>
+    <a href="../index.html" class="back-link">← Back to Portfolio</a>
+    
+    <header class="header">
+        <nav class="nav">
+            <div class="logo">📊 AI Analytics Dashboard</div>
+            <div class="user-info">
+                <span>Muhammad Shahzeb Malik</span>
+                <button class="refresh-btn" onclick="refreshData()">🔄 Refresh</button>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="dashboard-grid">
+            <!-- Revenue Card -->
+            <div class="card">
+                <div class="card-header">
+                    <h3>💰 Total Revenue</h3>
+                    <p>Monthly performance</p>
+                </div>
+                <div class="card-content">
+                    <div class="metric-large">
+                        <div class="metric-value" id="revenue">$0</div>
+                        <div class="metric-change positive" id="revenue-change">+0%</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Users Card -->
+            <div class="card">
+                <div class="card-header">
+                    <h3>👥 Active Users</h3>
+                    <p>Current month</p>
+                </div>
+                <div class="card-content">
+                    <div class="metric-large">
+                        <div class="metric-value" id="users">0</div>
+                        <div class="metric-change positive" id="users-change">+0%</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Conversion Rate -->
+            <div class="card">
+                <div class="card-header">
+                    <h3>📈 Conversion Rate</h3>
+                    <p>AI-optimized performance</p>
+                </div>
+                <div class="card-content">
+                    <div class="metric-large">
+                        <div class="metric-value" id="conversion">0%</div>
+                        <div class="metric-change positive" id="conversion-change">+0%</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="dashboard-grid">
+            <!-- Sales Chart -->
+            <div class="card" style="grid-column: span 2;">
+                <div class="card-header">
+                    <h3>📊 Sales Trend (AI Prediction)</h3>
+                    <p>Last 12 months with ML forecasting</p>
+                </div>
+                <div class="card-content">
+                    <div class="chart-container" id="salesChart">
+                        <!-- Bars will be generated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Performance Metrics -->
+            <div class="card">
+                <div class="card-header">
+                    <h3>⚡ Performance Metrics</h3>
+                    <p>Real-time monitoring</p>
+                </div>
+                <div class="card-content">
+                    <div style="margin-bottom: 1rem;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                            <span>Server Response</span>
+                            <span id="server-response">0ms</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="server-progress" style="width: 0%"></div>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-bottom: 1rem;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                            <span>Database Query</span>
+                            <span id="db-response">0ms</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="db-progress" style="width: 0%"></div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                            <span>AI Model Accuracy</span>
+                            <span id="ai-accuracy">0%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="ai-progress" style="width: 0%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Recent Activity Table -->
+        <div class="card">
+            <div class="card-header">
+                <h3>📋 Recent Activity</h3>
+                <p>Latest system events and predictions</p>
+            </div>
+            <div class="card-content">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Time</th>
+                            <th>Event</th>
+                            <th>User</th>
+                            <th>Status</th>
+                            <th>AI Confidence</th>
+                        </tr>
+                    </thead>
+                    <tbody id="activity-table">
+                        <!-- Rows will be generated by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Simulate real-time data
+        function generateRandomData() {
+            return {
+                revenue: Math.floor(Math.random() * 50000) + 25000,
+                revenueChange: (Math.random() * 20 - 5).toFixed(1),
+                users: Math.floor(Math.random() * 5000) + 2000,
+                usersChange: (Math.random() * 15 - 2).toFixed(1),
+                conversion: (Math.random() * 5 + 2).toFixed(1),
+                conversionChange: (Math.random() * 2 - 0.5).toFixed(1),
+                serverResponse: Math.floor(Math.random() * 200) + 50,
+                dbResponse: Math.floor(Math.random() * 100) + 20,
+                aiAccuracy: Math.floor(Math.random() * 15) + 85
+            };
+        }
+        
+        function updateMetrics() {
+            const data = generateRandomData();
+            
+            // Update main metrics
+            document.getElementById('revenue').textContent = `$${data.revenue.toLocaleString()}`;
+            document.getElementById('revenue-change').textContent = `${data.revenueChange > 0 ? '+' : ''}${data.revenueChange}%`;
+            document.getElementById('revenue-change').className = `metric-change ${data.revenueChange > 0 ? 'positive' : 'negative'}`;
+            
+            document.getElementById('users').textContent = data.users.toLocaleString();
+            document.getElementById('users-change').textContent = `${data.usersChange > 0 ? '+' : ''}${data.usersChange}%`;
+            document.getElementById('users-change').className = `metric-change ${data.usersChange > 0 ? 'positive' : 'negative'}`;
+            
+            document.getElementById('conversion').textContent = `${data.conversion}%`;
+            document.getElementById('conversion-change').textContent = `${data.conversionChange > 0 ? '+' : ''}${data.conversionChange}%`;
+            document.getElementById('conversion-change').className = `metric-change ${data.conversionChange > 0 ? 'positive' : 'negative'}`;
+            
+            // Update performance metrics
+            document.getElementById('server-response').textContent = `${data.serverResponse}ms`;
+            document.getElementById('server-progress').style.width = `${Math.min(100, (300 - data.serverResponse) / 3)}%`;
+            
+            document.getElementById('db-response').textContent = `${data.dbResponse}ms`;
+            document.getElementById('db-progress').style.width = `${Math.min(100, (150 - data.dbResponse) / 1.5)}%`;
+            
+            document.getElementById('ai-accuracy').textContent = `${data.aiAccuracy}%`;
+            document.getElementById('ai-progress').style.width = `${data.aiAccuracy}%`;
+        }
+        
+        function generateSalesChart() {
+            const chart = document.getElementById('salesChart');
+            chart.innerHTML = '';
+            
+            for (let i = 0; i < 12; i++) {
+                const bar = document.createElement('div');
+                bar.className = 'bar';
+                const height = Math.random() * 150 + 50;
+                bar.style.height = `${height}px`;
+                bar.title = `Month ${i + 1}: $${Math.floor(height * 100)}`;
+                chart.appendChild(bar);
+            }
+        }
+        
+        function generateActivityTable() {
+            const tbody = document.getElementById('activity-table');
+            const events = [
+                'User login', 'Purchase completed', 'AI prediction generated', 'Data processed', 'Report generated'
+            ];
+            const users = ['john.doe', 'jane.smith', 'mike.wilson', 'sarah.jones', 'alex.brown'];
+            const statuses = ['active', 'pending', 'inactive'];
+            
+            tbody.innerHTML = '';
+            
+            for (let i = 0; i < 8; i++) {
+                const row = document.createElement('tr');
+                const time = new Date(Date.now() - Math.random() * 3600000).toLocaleTimeString();
+                const event = events[Math.floor(Math.random() * events.length)];
+                const user = users[Math.floor(Math.random() * users.length)];
+                const status = statuses[Math.floor(Math.random() * statuses.length)];
+                const confidence = Math.floor(Math.random() * 30) + 70;
+                
+                row.innerHTML = `
+                    <td>${time}</td>
+                    <td>${event}</td>
+                    <td>${user}</td>
+                    <td><span class="status-badge ${status}">${status}</span></td>
+                    <td>${confidence}%</td>
+                `;
+                tbody.appendChild(row);
+            }
+        }
+        
+        function refreshData() {
+            updateMetrics();
+            generateSalesChart();
+            generateActivityTable();
+            
+            // Show refresh feedback
+            const btn = document.querySelector('.refresh-btn');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '✓ Updated';
+            btn.style.background = '#10b981';
+            
+            setTimeout(() => {
+                btn.innerHTML = originalText;
+                btn.style.background = '#10b981';
+            }, 1000);
+        }
+        
+        // Initialize dashboard
+        document.addEventListener('DOMContentLoaded', function() {
+            refreshData();
+            
+            // Auto-refresh every 10 seconds
+            setInterval(updateMetrics, 10000);
+        });
+    </script>
+</body>
+</html>

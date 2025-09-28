@@ -1,0 +1,10 @@
+Logo Files Needed:
+
+1. vsg-logo.png - Main logo (recommended: 200x60px)
+2. favicon.ico - Browser favicon (16x16px, 32x32px)
+3. apple-touch-icon.png - iOS icon (180x180px)
+
+Brand Colors:
+- Primary: #2563eb (Blue)
+- Secondary: #7c3aed (Purple)
+- Accent: #10b981 (Green)

@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Database Automation System | Muhammad Shahzeb Malik</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', sans-serif; background: #0f172a; color: white; }
+        
+        .header { background: linear-gradient(135deg, #1e293b, #334155); padding: 2rem 0; text-align: center; }
+        .header h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+        .header p { opacity: 0.8; }
+        
+        .container { max-width: 1400px; margin: 0 auto; padding: 2rem 20px; }
+        .grid { display: grid; grid-template-columns: 1fr 2fr; gap: 2rem; margin-bottom: 2rem; }
+        
+        .panel { background: #1e293b; border-radius: 15px; padding: 2rem; border: 1px solid #334155; }
+        .panel h3 { color: #60a5fa; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
+        
+        .query-builder { margin-bottom: 2rem; }
+        .form-group { margin-bottom: 1rem; }
+        .form-group label { display: block; margin-bottom: 0.5rem; color: #cbd5e1; }
+        .form-group select, .form-group input { width: 100%; padding: 0.8rem; background: #334155; border: 1px solid #475569; border-radius: 8px; color: white; }
+        .form-group select:focus, .form-group input:focus { outline: none; border-color: #60a5fa; }
+        
+        .btn { padding: 0.8rem 1.5rem; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; transition: all 0.3s; }
+        .btn-primary { background: #2563eb; color: white; }
+        .btn-primary:hover { background: #1d4ed8; }
+        .btn-success { background: #10b981; color: white; }
+        .btn-success:hover { background: #059669; }
+        .btn-danger { background: #ef4444; color: white; }
+        .btn-danger:hover { background: #dc2626; }
+        
+        .query-display { background: #0f172a; padding: 1rem; border-radius: 8px; font-family: 'Courier New', monospace; border: 1px solid #334155; margin: 1rem 0; }
+        .query-display code { color: #60a5fa; }
+        
+        .results-table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+        .results-table th, .results-table td { padding: 0.8rem; text-align: left; border-bottom: 1px solid #334155; }
+        .results-table th { background: #334155; color: #cbd5e1; }
+        .results-table td { background: #1e293b; }
+        
+        .automation-list { max-height: 300px; overflow-y: auto; }
+        .automation-item { background: #334155; padding: 1rem; border-radius: 8px; margin-bottom: 0.5rem; display: flex; justify-content: space-between; align-items: center; }
+        .automation-status { padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.8rem; }
+        .automation-status.running { background: #10b981; color: white; }
+        .automation-status.paused { background: #f59e0b; color: white; }
+        .automation-status.stopped { background: #6b7280; color: white; }
+        
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
+        .stat-card { background: #1e293b; padding: 1.5rem; border-radius: 10px; text-align: center; border: 1px solid #334155; }
+        .stat-value { font-size: 2rem; font-weight: bold; color: #60a5fa; }
+        .stat-label { color: #cbd5e1; font-size: 0.9rem; }
+        
+        .back-link { position: fixed; top: 20px; right: 20px; background: #2563eb; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; z-index: 1000; }
+        
+        .log-container { background: #0f172a; padding: 1rem; border-radius: 8px; height: 200px; overflow-y: auto; font-family: 'Courier New', monospace; font-size: 0.9rem; border: 1px solid #334155; }
+        .log-entry { margin-bottom: 0.5rem; }
+        .log-entry.success { color: #10b981; }
+        .log-entry.error { color: #ef4444; }
+        .log-entry.info { color: #60a5fa; }
+    </style>
+</head>
+<body>
+    <a href="../index.html" class="back-link">← Back to Portfolio</a>
+    
+    <header class="header">
+        <h1>🗄️ Database Automation System</h1>
+        <p>Advanced database management and automation tools</p>
+    </header>
+
+    <div class="container">
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-value" id="total-queries">0</div>
+                <div class="stat-label">Queries Executed</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="active-automations">0</div>
+                <div class="stat-label">Active Automations</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="data-processed">0</div>
+                <div class="stat-label">Records Processed</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="uptime">99.9%</div>
+                <div class="stat-label">System Uptime</div>
+            </div>
+        </div>
+        
+        <div class="grid">
+            <div class="panel">
+                <h3>🔧 Query Builder</h3>
+                <div class="query-builder">
+                    <div class="form-group">
+                        <label>Database Table</label>
+                        <select id="table-select" onchange="updateQuery()">
+                            <option value="users">users</option>
+                            <option value="orders">orders</option>
+                            <option value="products">products</option>
+                            <option value="customers">customers</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Query Type</label>
+                        <select id="query-type" onchange="updateQuery()">
+                            <option value="SELECT">SELECT</option>
+                            <option value="INSERT">INSERT</option>
+                            <option value="UPDATE">UPDATE</option>
+                            <option value="DELETE">DELETE</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Conditions</label>
+                        <input type="text" id="conditions" placeholder="WHERE clause" onkeyup="updateQuery()">
+                    </div>
+                    
+                    <div class="query-display">
+                        <code id="generated-query">SELECT * FROM users;</code>
+                    </div>
+                    
+                    <button class="btn btn-primary" onclick="executeQuery()">▶️ Execute Query</button>
+                    <button class="btn btn-success" onclick="saveAutomation()">💾 Save as Automation</button>
+                </div>
+            </div>
+            
+            <div class="panel">
+                <h3>📊 Query Results</h3>
+                <div id="results-container">
+                    <p style="color: #64748b; text-align: center; padding: 2rem;">Execute a query to see results</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="grid">
+            <div class="panel">
+                <h3>⚙️ Active Automations</h3>
+                <div class="automation-list" id="automation-list">
+                    <!-- Automations will be populated by JavaScript -->
+                </div>
+                <button class="btn btn-success" onclick="addSampleAutomation()">➕ Add Sample Automation</button>
+            </div>
+            
+            <div class="panel">
+                <h3>📝 System Logs</h3>
+                <div class="log-container" id="log-container">
+                    <!-- Logs will be populated by JavaScript -->
+                </div>
+                <button class="btn btn-primary" onclick="clearLogs()">🗑️ Clear Logs</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let queryCount = 0;
+        let automationCount = 0;
+        let recordsProcessed = 0;
+        
+        const sampleData = {
+            users: [
+                { id: 1, name: 'John Doe', email: 'john@example.com', status: 'active' },
+                { id: 2, name: 'Jane Smith', email: 'jane@example.com', status: 'active' },
+                { id: 3, name: 'Mike Wilson', email: 'mike@example.com', status: 'inactive' }
+            ],
+            orders: [
+                { id: 101, user_id: 1, total: 299.99, status: 'completed' },
+                { id: 102, user_id: 2, total: 149.50, status: 'pending' },
+                { id: 103, user_id: 1, total: 89.99, status: 'shipped' }
+            ],
+            products: [
+                { id: 1, name: 'Laptop Pro', price: 1299.99, stock: 15 },
+                { id: 2, name: 'Smartphone X', price: 899.99, stock: 32 },
+                { id: 3, name: 'Headphones', price: 199.99, stock: 8 }
+            ]
+        };
+        
+        function updateQuery() {
+            const table = document.getElementById('table-select').value;
+            const queryType = document.getElementById('query-type').value;
+            const conditions = document.getElementById('conditions').value;
+            
+            let query = '';
+            switch(queryType) {
+                case 'SELECT':
+                    query = `SELECT * FROM ${table}`;
+                    if (conditions) query += ` WHERE ${conditions}`;
+                    break;
+                case 'INSERT':
+                    query = `INSERT INTO ${table} (column1, column2) VALUES (value1, value2)`;
+                    break;
+                case 'UPDATE':
+                    query = `UPDATE ${table} SET column1 = value1`;
+                    if (conditions) query += ` WHERE ${conditions}`;
+                    break;
+                case 'DELETE':
+                    query = `DELETE FROM ${table}`;
+                    if (conditions) query += ` WHERE ${conditions}`;
+                    break;
+            }
+            query += ';';
+            
+            document.getElementById('generated-query').textContent = query;
+        }
+        
+        function executeQuery() {
+            const table = document.getElementById('table-select').value;
+            const queryType = document.getElementById('query-type').value;
+            const query = document.getElementById('generated-query').textContent;
+            
+            queryCount++;
+            recordsProcessed += Math.floor(Math.random() * 10) + 1;
+            updateStats();
+            
+            addLog(`Executing query: ${query}`, 'info');
+            
+            setTimeout(() => {
+                if (queryType === 'SELECT' && sampleData[table]) {
+                    displayResults(sampleData[table]);
+                    addLog(`Query executed successfully. ${sampleData[table].length} records returned.`, 'success');
+                } else {
+                    displayResults([{message: `${queryType} query executed successfully`}]);
+                    addLog(`${queryType} query executed successfully.`, 'success');
+                }
+            }, 1000);
+        }
+        
+        function displayResults(data) {
+            const container = document.getElementById('results-container');
+            
+            if (data.length === 0) {
+                container.innerHTML = '<p style="color: #64748b; text-align: center; padding: 2rem;">No results found</p>';
+                return;
+            }
+            
+            const table = document.createElement('table');
+            table.className = 'results-table';
+            
+            // Create header
+            const thead = document.createElement('thead');
+            const headerRow = document.createElement('tr');
+            Object.keys(data[0]).forEach(key => {
+                const th = document.createElement('th');
+                th.textContent = key;
+                headerRow.appendChild(th);
+            });
+            thead.appendChild(headerRow);
+            table.appendChild(thead);
+            
+            // Create body
+            const tbody = document.createElement('tbody');
+            data.forEach(row => {
+                const tr = document.createElement('tr');
+                Object.values(row).forEach(value => {
+                    const td = document.createElement('td');
+                    td.textContent = value;
+                    tr.appendChild(td);
+                });
+                tbody.appendChild(tr);
+            });
+            table.appendChild(tbody);
+            
+            container.innerHTML = '';
+            container.appendChild(table);
+        }
+        
+        function saveAutomation() {
+            const query = document.getElementById('generated-query').textContent;
+            const table = document.getElementById('table-select').value;
+            
+            automationCount++;
+            updateStats();
+            
+            const automationList = document.getElementById('automation-list');
+            const item = document.createElement('div');
+            item.className = 'automation-item';
+            item.innerHTML = `
+                <div>
+                    <strong>Auto-${automationCount}: ${table} Query</strong><br>
+                    <small style="color: #cbd5e1;">${query}</small>
+                </div>
+                <div>
+                    <span class="automation-status running">Running</span>
+                    <button class="btn btn-danger" style="margin-left: 0.5rem; padding: 0.3rem 0.8rem;" onclick="removeAutomation(this)">Stop</button>
+                </div>
+            `;
+            
+            automationList.appendChild(item);
+            addLog(`Automation saved: ${query}`, 'success');
+        }
+        
+        function addSampleAutomation() {
+            const samples = [
+                'Daily user cleanup: DELETE FROM users WHERE last_login < DATE_SUB(NOW(), INTERVAL 90 DAY);',
+                'Order status update: UPDATE orders SET status = "shipped" WHERE status = "processing";',
+                'Inventory check: SELECT * FROM products WHERE stock < 10;'
+            ];
+            
+            const sample = samples[Math.floor(Math.random() * samples.length)];
+            automationCount++;
+            updateStats();
+            
+            const automationList = document.getElementById('automation-list');
+            const item = document.createElement('div');
+            item.className = 'automation-item';
+            item.innerHTML = `
+                <div>
+                    <strong>Auto-${automationCount}: Sample Task</strong><br>
+                    <small style="color: #cbd5e1;">${sample}</small>
+                </div>
+                <div>
+                    <span class="automation-status running">Running</span>
+                    <button class="btn btn-danger" style="margin-left: 0.5rem; padding: 0.3rem 0.8rem;" onclick="removeAutomation(this)">Stop</button>
+                </div>
+            `;
+            
+            automationList.appendChild(item);
+            addLog(`Sample automation added: ${sample}`, 'info');
+        }
+        
+        function removeAutomation(button) {
+            const item = button.closest('.automation-item');
+            item.remove();
+            automationCount = Math.max(0, automationCount - 1);
+            updateStats();
+            addLog('Automation stopped and removed', 'info');
+        }
+        
+        function addLog(message, type = 'info') {
+            const logContainer = document.getElementById('log-container');
+            const timestamp = new Date().toLocaleTimeString();
+            const logEntry = document.createElement('div');
+            logEntry.className = `log-entry ${type}`;
+            logEntry.textContent = `[${timestamp}] ${message}`;
+            
+            logContainer.appendChild(logEntry);
+            logContainer.scrollTop = logContainer.scrollHeight;
+        }
+        
+        function clearLogs() {
+            document.getElementById('log-container').innerHTML = '';
+            addLog('Logs cleared', 'info');
+        }
+        
+        function updateStats() {
+            document.getElementById('total-queries').textContent = queryCount;
+            document.getElementById('active-automations').textContent = automationCount;
+            document.getElementById('data-processed').textContent = recordsProcessed.toLocaleString();
+        }
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            updateQuery();
+            addLog('Database Automation System initialized', 'success');
+            addLog('Connected to demo database', 'info');
+            
+            // Simulate some initial activity
+            setTimeout(() => {
+                addSampleAutomation();
+            }, 2000);
+        });
+    </script>
+</body>
+</html>

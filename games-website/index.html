@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browser Games Hub</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-left">
+                <h1 class="logo">🎮 Browser Games Hub</h1>
+                <p class="developer-credit">Developed by <strong>Muhammad Shahzeb Malik</strong></p>
+            </div>
+            <nav class="nav">
+                <a href="../index.html" class="btn-secondary">← Portfolio</a>
+                <button id="loginBtn" class="btn-primary">Login</button>
+                <button id="leaderboardBtn" class="btn-secondary">Leaderboard</button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <!-- Top 3 Most Played Section -->
+            <section class="top-games">
+                <h2>🏆 Top 3 Most Played</h2>
+                <div class="top-games-grid" id="topGames">
+                    <div class="game-card top-game" onclick="window.open('games/snake.html', '_blank')">
+                        <div class="game-icon">🐍</div>
+                        <div class="game-title">Snake Game</div>
+                        <div class="game-stats">
+                            <span>Plays: 1250</span>
+                            <span>Most Popular</span>
+                        </div>
+                    </div>
+
+                    <div class="game-card top-game" onclick="window.open('games/tic-tac-toe.html', '_blank')">
+                        <div class="game-icon">⭕</div>
+                        <div class="game-title">Tic Tac Toe</div>
+                        <div class="game-stats">
+                            <span>Plays: 980</span>
+                            <span>Classic</span>
+                        </div>
+                    </div>
+
+                    <div class="game-card top-game" onclick="window.open('games/tetris.html', '_blank')">
+                        <div class="game-icon">🧩</div>
+                        <div class="game-title">Tetris</div>
+                        <div class="game-stats">
+                            <span>Plays: 850</span>
+                            <span>Trending</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- All Games Section -->
+            <section class="all-games">
+                <h2>🎯 All Games</h2>
+                <div class="games-grid" id="allGames">
+                    <div class="game-card" onclick="window.open('games/snake.html', '_blank')">
+                        <div class="game-icon">🐍</div>
+                        <div class="game-title">Snake Game</div>
+                        <div class="game-stats">
+                            <span>Plays: 1250</span>
+                            <span>High Score: 0</span>
+                        </div>
+                    </div>
+
+                    <div class="game-card" onclick="window.open('games/tic-tac-toe.html', '_blank')">
+                        <div class="game-icon">⭕</div>
+                        <div class="game-title">Tic Tac Toe</div>
+                        <div class="game-stats">
+                            <span>Plays: 980</span>
+                            <span>High Score: 0</span>
+                        </div>
+                    </div>
+
+                    <div class="game-card" onclick="window.open('games/tetris.html', '_blank')">
+                        <div class="game-icon">🧩</div>
+                        <div class="game-title">Tetris</div>
+                        <div class="game-stats">
+                            <span>Plays: 850</span>
+                            <span>High Score: 0</span>
+                        </div>
+                    </div>
+
+                    <div class="game-card" onclick="window.open('games/pong.html', '_blank')">
+                        <div class="game-icon">🏓</div>
+                        <div class="game-title">Pong</div>
+                        <div class="game-stats">
+                            <span>Plays: 720</span>
+                            <span>High Score: 0</span>
+                        </div>
+                    </div>
+
+                    <div class="game-card" onclick="window.open('games/breakout.html', '_blank')">
+                        <div class="game-icon">🧱</div>
+                        <div class="game-title">Breakout</div>
+                        <div class="game-stats">
+                            <span>Plays: 650</span>
+                            <span>High Score: 0</span>
+                        </div>
+                    </div>
+
+                    <div class="game-card" onclick="window.open('games/memory.html', '_blank')">
+                        <div class="game-icon">🧠</div>
+                        <div class="game-title">Memory Game</div>
+                        <div class="game-stats">
+                            <span>Plays: 580</span>
+                            <span>High Score: 0</span>
+                        </div>
+                    </div>
+
+                    <div class="game-card" onclick="window.open('games/maze.html', '_blank')">
+                        <div class="game-icon">🌀</div>
+                        <div class="game-title">Maze Runner</div>
+                        <div class="game-stats">
+                            <span>Plays: 490</span>
+                            <span>High Score: 0</span>
+                        </div>
+                    </div>
+
+                    <div class="game-card" onclick="window.open('games/2048.html', '_blank')">
+                        <div class="game-icon">🔢</div>
+                        <div class="game-title">2048</div>
+                        <div class="game-stats">
+                            <span>Plays: 420</span>
+                            <span>High Score: 0</span>
+                        </div>
+                    </div>
+
+                    <div class="game-card" onclick="window.open('games/space-invaders.html', '_blank')">
+                        <div class="game-icon">👾</div>
+                        <div class="game-title">Space Invaders</div>
+                        <div class="game-stats">
+                            <span>Plays: 380</span>
+                            <span>High Score: 0</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Browser Games Hub - Developed by <strong>Muhammad Shahzeb Malik</strong></p>
+            <p>Full-Stack Developer & AI/ML Specialist | <a href="../index.html">View Portfolio</a></p>
+        </div>
+    </footer>
+
+    <!-- Game Modal -->
+    <div id="gameModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="gameContainer"></div>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Login / Register</h3>
+            <form id="loginForm">
+                <input type="text" id="username" placeholder="Username" required>
+                <input type="password" id="password" placeholder="Password" required>
+                <button type="submit">Login</button>
+                <button type="button" id="registerBtn">Register</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Leaderboard Modal -->
+    <div id="leaderboardModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>🏆 Leaderboard</h3>
+            <div id="leaderboardContent"></div>
+        </div>
+    </div>
+
+    <script>
+        // Simple analytics for game clicks
+        document.addEventListener('DOMContentLoaded', function() {
+            const gameCards = document.querySelectorAll('.game-card');
+            gameCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    // Track game clicks
+                    const gameName = this.querySelector('.game-title').textContent;
+                    console.log(`Game clicked: ${gameName}`);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

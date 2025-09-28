@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechStore - E-commerce Demo | Muhammad Shahzeb Malik</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', sans-serif; }
+        
+        .header { background: #2563eb; color: white; padding: 1rem 0; }
+        .nav { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; }
+        .logo { font-size: 1.5rem; font-weight: bold; }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a { color: white; text-decoration: none; }
+        .cart { background: #1d4ed8; padding: 0.5rem 1rem; border-radius: 5px; cursor: pointer; }
+        
+        .hero { background: linear-gradient(135deg, #667eea, #764ba2); color: white; padding: 4rem 0; text-align: center; }
+        .hero h1 { font-size: 3rem; margin-bottom: 1rem; }
+        .hero p { font-size: 1.2rem; margin-bottom: 2rem; }
+        .btn { background: white; color: #2563eb; padding: 12px 30px; border: none; border-radius: 5px; font-weight: bold; cursor: pointer; }
+        
+        .products { padding: 4rem 0; max-width: 1200px; margin: 0 auto; }
+        .products h2 { text-align: center; margin-bottom: 3rem; font-size: 2.5rem; }
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; padding: 0 20px; }
+        .product-card { background: white; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); overflow: hidden; transition: transform 0.3s; }
+        .product-card:hover { transform: translateY(-5px); }
+        .product-image { height: 200px; background: #f1f5f9; display: flex; align-items: center; justify-content: center; color: #64748b; font-size: 1.1rem; }
+        .product-info { padding: 1.5rem; }
+        .product-title { font-size: 1.2rem; margin-bottom: 0.5rem; }
+        .product-price { font-size: 1.5rem; color: #2563eb; font-weight: bold; margin-bottom: 1rem; }
+        .add-to-cart { background: #2563eb; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; width: 100%; }
+        .add-to-cart:hover { background: #1d4ed8; }
+        
+        .footer { background: #1e293b; color: white; padding: 2rem 0; text-align: center; }
+        .back-link { position: fixed; top: 20px; right: 20px; background: #2563eb; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; z-index: 1000; }
+    </style>
+</head>
+<body>
+    <a href="../index.html" class="back-link">← Back to Portfolio</a>
+    
+    <header class="header">
+        <nav class="nav">
+            <div class="logo">TechStore</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="cart" onclick="showCart()">Cart (<span id="cart-count">0</span>)</div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Latest Tech Products</h1>
+        <p>Discover cutting-edge technology at unbeatable prices</p>
+        <button class="btn" onclick="document.getElementById('products').scrollIntoView()">Shop Now</button>
+    </section>
+
+    <section id="products" class="products">
+        <h2>Featured Products</h2>
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="product-image">💻 Gaming Laptop</div>
+                <div class="product-info">
+                    <h3 class="product-title">Gaming Laptop Pro</h3>
+                    <div class="product-price">$1,299.99</div>
+                    <button class="add-to-cart" onclick="addToCart('Gaming Laptop Pro', 1299.99)">Add to Cart</button>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">📱 Smartphone</div>
+                <div class="product-info">
+                    <h3 class="product-title">Smartphone X</h3>
+                    <div class="product-price">$899.99</div>
+                    <button class="add-to-cart" onclick="addToCart('Smartphone X', 899.99)">Add to Cart</button>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">🎧 Headphones</div>
+                <div class="product-info">
+                    <h3 class="product-title">Wireless Headphones</h3>
+                    <div class="product-price">$199.99</div>
+                    <button class="add-to-cart" onclick="addToCart('Wireless Headphones', 199.99)">Add to Cart</button>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">📱 Tablet</div>
+                <div class="product-info">
+                    <h3 class="product-title">Tablet Pro</h3>
+                    <div class="product-price">$599.99</div>
+                    <button class="add-to-cart" onclick="addToCart('Tablet Pro', 599.99)">Add to Cart</button>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">⌚ Smart Watch</div>
+                <div class="product-info">
+                    <h3 class="product-title">Smart Watch Series 5</h3>
+                    <div class="product-price">$399.99</div>
+                    <button class="add-to-cart" onclick="addToCart('Smart Watch Series 5', 399.99)">Add to Cart</button>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">📷 Camera</div>
+                <div class="product-info">
+                    <h3 class="product-title">Digital Camera 4K</h3>
+                    <div class="product-price">$799.99</div>
+                    <button class="add-to-cart" onclick="addToCart('Digital Camera 4K', 799.99)">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2024 TechStore - Demo E-commerce Site by Muhammad Shahzeb Malik</p>
+        <p>This is a portfolio demonstration project showcasing e-commerce development skills</p>
+    </footer>
+
+    <script>
+        let cart = [];
+        
+        function addToCart(name, price) {
+            cart.push({name, price});
+            updateCartDisplay();
+            
+            // Show success message
+            const button = event.target;
+            const originalText = button.textContent;
+            button.textContent = 'Added!';
+            button.style.background = '#10b981';
+            
+            setTimeout(() => {
+                button.textContent = originalText;
+                button.style.background = '#2563eb';
+            }, 1000);
+        }
+        
+        function updateCartDisplay() {
+            document.getElementById('cart-count').textContent = cart.length;
+        }
+        
+        function showCart() {
+            if (cart.length === 0) {
+                alert('Your cart is empty!');
+                return;
+            }
+            
+            let cartItems = 'Cart Items:\n\n';
+            let total = 0;
+            
+            cart.forEach((item, index) => {
+                cartItems += `${index + 1}. ${item.name} - $${item.price}\n`;
+                total += item.price;
+            });
+            
+            cartItems += `\nTotal: $${total.toFixed(2)}`;
+            alert(cartItems);
+        }
+    </script>
+</body>
+</html>

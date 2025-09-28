@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bannu Beef Pulao - Authentic Pakistani Cuisine | Home Delivery</title>
+    <meta name="description" content="Experience the authentic taste of Bannu with our traditional beef pulao. Fast home delivery, fresh ingredients, and flavors that transport you to Pakistan.">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', sans-serif; line-height: 1.6; color: #2d1810; }
+        
+        .navbar { position: fixed; top: 0; width: 100%; background: rgba(139, 69, 19, 0.95); backdrop-filter: blur(10px); z-index: 1000; padding: 1rem 0; }
+        .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; }
+        .logo { font-size: 1.8rem; font-weight: bold; color: #ffd700; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+        .nav-menu { display: flex; list-style: none; gap: 2rem; }
+        .nav-menu a { color: white; text-decoration: none; font-weight: 500; transition: color 0.3s; }
+        .nav-menu a:hover { color: #ffd700; }
+        .order-btn { background: #ffd700; color: #8b4513; padding: 0.8rem 1.5rem; border-radius: 25px; text-decoration: none; font-weight: bold; transition: all 0.3s; }
+        .order-btn:hover { background: #ffed4e; transform: translateY(-2px); box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4); }
+        
+        .hero { background: linear-gradient(rgba(139, 69, 19, 0.7), rgba(101, 67, 33, 0.8)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23d2691e" width="1200" height="600"/><circle cx="200" cy="150" r="50" fill="%23cd853f" opacity="0.3"/><circle cx="800" cy="400" r="80" fill="%23daa520" opacity="0.2"/><rect x="400" y="200" width="400" height="200" rx="20" fill="%23f4a460" opacity="0.1"/></svg>'); color: white; padding: 120px 0 80px; text-align: center; min-height: 100vh; display: flex; align-items: center; }
+        .hero-content { max-width: 800px; margin: 0 auto; padding: 0 20px; }
+        .hero h1 { font-size: 4rem; margin-bottom: 1rem; font-weight: 700; text-shadow: 3px 3px 6px rgba(0,0,0,0.5); }
+        .hero-tagline { font-size: 1.4rem; margin-bottom: 2rem; opacity: 0.95; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
+        .hero-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem; }
+        .btn { padding: 15px 30px; border-radius: 8px; text-decoration: none; font-weight: 600; transition: all 0.3s; display: inline-block; }
+        .btn-primary { background: #ffd700; color: #8b4513; }
+        .btn-primary:hover { background: #ffed4e; transform: translateY(-3px); box-shadow: 0 10px 25px rgba(255, 215, 0, 0.4); }
+        .btn-secondary { background: transparent; color: white; border: 2px solid white; }
+        .btn-secondary:hover { background: white; color: #8b4513; }
+        
+        .section { padding: 80px 0; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .section-title { text-align: center; font-size: 3rem; margin-bottom: 1rem; color: #8b4513; }
+        .section-subtitle { text-align: center; font-size: 1.2rem; color: #654321; margin-bottom: 4rem; max-width: 600px; margin-left: auto; margin-right: auto; }
+        
+        .features { background: #faf5f0; }
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+        .feature-card { background: white; padding: 2.5rem; border-radius: 15px; box-shadow: 0 10px 30px rgba(139, 69, 19, 0.1); text-align: center; transition: transform 0.3s; border-top: 4px solid #ffd700; }
+        .feature-card:hover { transform: translateY(-10px); }
+        .feature-icon { font-size: 4rem; margin-bottom: 1rem; }
+        .feature-card h3 { font-size: 1.5rem; margin-bottom: 1rem; color: #8b4513; }
+        .feature-card p { color: #654321; line-height: 1.6; }
+        
+        .menu { background: white; }
+        .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; }
+        .menu-item { background: #faf5f0; border-radius: 15px; overflow: hidden; box-shadow: 0 8px 25px rgba(139, 69, 19, 0.1); transition: all 0.3s; }
+        .menu-item:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(139, 69, 19, 0.2); }
+        .menu-image { height: 200px; background: linear-gradient(45deg, #d2691e, #cd853f); display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem; position: relative; }
+        .menu-image::after { content: ''; position: absolute; inset: 0; background: rgba(139, 69, 19, 0.2); }
+        .menu-info { padding: 2rem; }
+        .menu-item h3 { font-size: 1.4rem; margin-bottom: 0.5rem; color: #8b4513; }
+        .menu-description { color: #654321; margin-bottom: 1rem; line-height: 1.5; }
+        .menu-price { font-size: 1.8rem; font-weight: bold; color: #b8860b; margin-bottom: 1rem; }
+        .add-to-order { background: #8b4513; color: white; padding: 10px 20px; border: none; border-radius: 8px; cursor: pointer; width: 100%; font-weight: bold; transition: background 0.3s; }
+        .add-to-order:hover { background: #654321; }
+        
+        .order-section { background: linear-gradient(135deg, #8b4513, #654321); color: white; }
+        .order-form { background: rgba(255, 255, 255, 0.1); padding: 3rem; border-radius: 20px; backdrop-filter: blur(10px); max-width: 600px; margin: 0 auto; }
+        .form-group { margin-bottom: 1.5rem; }
+        .form-group label { display: block; margin-bottom: 0.5rem; font-weight: 500; }
+        .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 1rem; border: none; border-radius: 8px; background: rgba(255, 255, 255, 0.9); color: #2d1810; font-size: 1rem; }
+        .form-group input:focus, .form-group textarea:focus, .form-group select:focus { outline: none; background: white; }
+        
+        .cart { background: rgba(255, 215, 0, 0.1); padding: 1.5rem; border-radius: 10px; margin-bottom: 2rem; }
+        .cart-item { display: flex; justify-content: space-between; align-items: center; padding: 0.5rem 0; border-bottom: 1px solid rgba(255, 255, 255, 0.2); }
+        .cart-total { font-size: 1.5rem; font-weight: bold; text-align: center; margin-top: 1rem; color: #ffd700; }
+        
+        .about { background: #faf5f0; }
+        .about-content { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+        .about-text h2 { font-size: 2.5rem; margin-bottom: 1.5rem; color: #8b4513; }
+        .about-text p { color: #654321; margin-bottom: 1.5rem; font-size: 1.1rem; line-height: 1.7; }
+        .about-image { height: 400px; background: linear-gradient(135deg, #d2691e, #cd853f); border-radius: 15px; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem; text-align: center; }
+        
+        .footer { background: #2d1810; color: white; padding: 3rem 0 1rem; }
+        .footer-content { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-bottom: 2rem; }
+        .footer-section h3 { margin-bottom: 1rem; color: #ffd700; }
+        .footer-section p, .footer-section a { color: #d2b48c; text-decoration: none; line-height: 1.8; }
+        .footer-section a:hover { color: #ffd700; }
+        .footer-bottom { text-align: center; padding-top: 2rem; border-top: 1px solid #654321; color: #8b7355; }
+        
+        .back-link { position: fixed; top: 80px; right: 20px; background: rgba(139, 69, 19, 0.9); color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; z-index: 1000; }
+        
+        .admin-note { background: #fff3cd; border: 1px solid #ffeaa7; color: #856404; padding: 1rem; border-radius: 8px; margin-bottom: 2rem; text-align: center; }
+        
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .about-content { grid-template-columns: 1fr; }
+            .nav-menu { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <a href="../index.html" class="back-link">← Back to Portfolio</a>
+    
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">🍛 Bannu Beef Pulao</div>
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#order">Order Now</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <a href="#order" class="order-btn">🛵 Order Now</a>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Bannu Beef Pulao</h1>
+            <p class="hero-tagline">Experience the authentic taste of Bannu's legendary beef pulao, delivered fresh to your doorstep with the same traditional flavors that have been cherished for generations</p>
+            <div class="hero-buttons">
+                <a href="#order" class="btn btn-primary">🛵 Order Now - Fast Delivery</a>
+                <a href="#menu" class="btn btn-secondary">📋 View Menu</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section features">
+        <div class="container">
+            <h2 class="section-title">Why Choose Bannu Beef Pulao?</h2>
+            <p class="section-subtitle">We bring you the most authentic Pakistani beef pulao experience with uncompromising quality and lightning-fast delivery</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🥩</div>
+                    <h3>Premium Beef</h3>
+                    <p>Hand-selected, tender beef cooked to perfection with traditional Bannu spices and techniques passed down through generations</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🌾</div>
+                    <h3>Authentic Basmati</h3>
+                    <p>Long-grain basmati rice sourced directly from Pakistan, perfectly cooked with aromatic spices for that authentic taste</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🚀</div>
+                    <h3>Fast Delivery</h3>
+                    <p>Hot, fresh pulao delivered to your door in 30-45 minutes. We guarantee your meal arrives steaming hot and delicious</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">👨‍🍳</div>
+                    <h3>Master Chefs</h3>
+                    <p>Our chefs are from Bannu region, bringing authentic cooking methods and secret family recipes to every dish</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="menu" class="section menu">
+        <div class="container">
+            <h2 class="section-title">Our Delicious Menu</h2>
+            <p class="section-subtitle">Every dish is prepared fresh with authentic ingredients and traditional cooking methods</p>
+            
+            <div class="admin-note">
+                <strong>📝 Admin Panel:</strong> Menu items are dynamically managed through our backend system. Only authorized administrators can add, edit, or remove menu items to ensure quality and authenticity.
+            </div>
+            
+            <div class="menu-grid" id="menuGrid">
+                <!-- Menu items will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <section id="order" class="section order-section">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">Place Your Order</h2>
+            <p class="section-subtitle" style="color: rgba(255,255,255,0.9);">Select your favorite dishes and we'll deliver them hot and fresh to your doorstep</p>
+            
+            <div class="order-form">
+                <div class="cart" id="cart">
+                    <h3 style="color: #ffd700; margin-bottom: 1rem;">🛒 Your Order</h3>
+                    <div id="cartItems">
+                        <p style="text-align: center; opacity: 0.7;">No items selected yet. Browse our menu above!</p>
+                    </div>
+                    <div class="cart-total" id="cartTotal">Total: Rs. 0</div>
+                </div>
+                
+                <form id="orderForm">
+                    <div class="form-group">
+                        <label>👤 Full Name *</label>
+                        <input type="text" name="name" required placeholder="Enter your full name">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>📞 Phone Number *</label>
+                        <input type="tel" name="phone" required placeholder="+92 300 1234567">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>🏠 Delivery Address *</label>
+                        <textarea name="address" required rows="3" placeholder="Complete address with landmarks for easy delivery"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>⏰ Preferred Delivery Time</label>
+                        <select name="deliveryTime">
+                            <option value="asap">As Soon As Possible (30-45 mins)</option>
+                            <option value="1hour">In 1 Hour</option>
+                            <option value="2hours">In 2 Hours</option>
+                            <option value="evening">Evening (6-8 PM)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>💬 Special Instructions (Optional)</label>
+                        <textarea name="instructions" rows="2" placeholder="Any special requests or cooking preferences"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary" style="width: 100%; font-size: 1.2rem; padding: 1rem;">
+                        🛵 Confirm Order & Get Delivery
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="section about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>The Authentic Taste of Bannu</h2>
+                    <p>Bannu Beef Pulao brings you the legendary flavors of Bannu, a city renowned throughout Pakistan for its exceptional beef pulao. Our restaurant was founded by master chefs who learned their craft in the traditional kitchens of Bannu, where this iconic dish originated.</p>
+                    
+                    <p>We use only the finest ingredients: premium beef, authentic basmati rice, and a secret blend of spices that has been perfected over generations. Every grain of rice is infused with rich, aromatic flavors that transport you straight to the heart of Pakistan.</p>
+                    
+                    <p>Our commitment to authenticity means we never compromise on quality. From the moment you place your order to the first bite of our steaming hot pulao, we ensure an experience that honors the culinary traditions of Bannu.</p>
+                </div>
+                
+                <div class="about-image">
+                    🏛️ Traditional Kitchen<br>
+                    Authentic Bannu Recipes<br>
+                    Since 1985
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section" style="background: #8b4513; color: white;">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">Contact & Delivery Info</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3rem; text-align: center;">
+                <div>
+                    <h3 style="color: #ffd700; margin-bottom: 1rem;">📞 Order Hotline</h3>
+                    <p style="font-size: 1.5rem; font-weight: bold;">+92 300 PULAO-1</p>
+                    <p>Available 11 AM - 11 PM Daily</p>
+                </div>
+                
+                <div>
+                    <h3 style="color: #ffd700; margin-bottom: 1rem;">🚚 Delivery Areas</h3>
+                    <p>We deliver across the city</p>
+                    <p>Delivery Fee: Rs. 100</p>
+                    <p>Free delivery on orders above Rs. 2000</p>
+                </div>
+                
+                <div>
+                    <h3 style="color: #ffd700; margin-bottom: 1rem;">⏱️ Delivery Time</h3>
+                    <p>Standard: 30-45 minutes</p>
+                    <p>Peak hours: 45-60 minutes</p>
+                    <p>We guarantee hot, fresh delivery!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>🍛 Bannu Beef Pulao</h3>
+                    <p>Bringing authentic Pakistani flavors to your doorstep with the traditional taste of Bannu's legendary beef pulao.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <p><a href="#menu">Menu</a></p>
+                    <p><a href="#order">Order Online</a></p>
+                    <p><a href="#about">About Us</a></p>
+                    <p><a href="#contact">Contact</a></p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <p>📞 +92 300 PULAO-1</p>
+                    <p>📧 orders@bannubeefpulao.com</p>
+                    <p>📍 [Your Restaurant Address]</p>
+                    <p>🕐 11 AM - 11 PM Daily</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Follow Us</h3>
+                    <p><a href="#">Facebook</a></p>
+                    <p><a href="#">Instagram</a></p>
+                    <p><a href="#">WhatsApp Orders</a></p>
+                    <p><a href="#">Food Delivery Apps</a></p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Bannu Beef Pulao - Demo Restaurant Website by Muhammad Shahzeb Malik</p>
+                <p>This is a portfolio demonstration showcasing restaurant website development</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Sample menu data (in real app, this would come from backend API)
+        const menuItems = [
+            {
+                id: 1,
+                name: "Classic Bannu Beef Pulao",
+                description: "Our signature dish with tender beef pieces, aromatic basmati rice, and traditional Bannu spices. Served with raita and salad.",
+                price: 850,
+                image: "🍛",
+                category: "main"
+            },
+            {
+                id: 2,
+                name: "Special Mutton Pulao",
+                description: "Premium mutton cooked with fragrant rice and special masala blend. A royal feast in every bite.",
+                price: 950,
+                image: "🍚",
+                category: "main"
+            },
+            {
+                id: 3,
+                name: "Chicken Karahi",
+                description: "Traditional chicken karahi with fresh tomatoes, green chilies, and aromatic spices. Perfect with naan or rice.",
+                price: 750,
+                image: "🍗",
+                category: "main"
+            },
+            {
+                id: 4,
+                name: "Beef Karahi",
+                description: "Tender beef pieces cooked in traditional karahi style with fresh ingredients and authentic spices.",
+                price: 900,
+                image: "🥩",
+                category: "main"
+            },
+            {
+                id: 5,
+                name: "Fresh Naan",
+                description: "Soft, fluffy naan bread baked fresh in our tandoor oven. Perfect companion for all curries.",
+                price: 80,
+                image: "🫓",
+                category: "bread"
+            },
+            {
+                id: 6,
+                name: "Mint Raita",
+                description: "Cool and refreshing yogurt-based side dish with fresh mint and spices. Perfect with pulao.",
+                price: 120,
+                image: "🥒",
+                category: "sides"
+            },
+            {
+                id: 7,
+                name: "Fresh Salad",
+                description: "Crisp vegetables with onions, tomatoes, and cucumber. Dressed with lemon and chaat masala.",
+                price: 100,
+                image: "🥗",
+                category: "sides"
+            },
+            {
+                id: 8,
+                name: "Lassi (Sweet/Salty)",
+                description: "Traditional Pakistani yogurt drink available in sweet or salty variants. Refreshing and authentic.",
+                price: 150,
+                image: "🥛",
+                category: "drinks"
+            }
+        ];
+        
+        let cart = [];
+        
+        // Populate menu
+        function populateMenu() {
+            const menuGrid = document.getElementById('menuGrid');
+            menuGrid.innerHTML = menuItems.map(item => `
+                <div class="menu-item">
+                    <div class="menu-image">${item.image}</div>
+                    <div class="menu-info">
+                        <h3>${item.name}</h3>
+                        <p class="menu-description">${item.description}</p>
+                        <div class="menu-price">Rs. ${item.price}</div>
+                        <button class="add-to-order" onclick="addToCart(${item.id})">
+                            🛒 Add to Order
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+        
+        // Add item to cart
+        function addToCart(itemId) {
+            const item = menuItems.find(i => i.id === itemId);
+            const existingItem = cart.find(c => c.id === itemId);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ ...item, quantity: 1 });
+            }
+            
+            updateCartDisplay();
+            
+            // Show feedback
+            const button = event.target;
+            const originalText = button.innerHTML;
+            button.innerHTML = '✅ Added!';
+            button.style.background = '#10b981';
+            
+            setTimeout(() => {
+                button.innerHTML = originalText;
+                button.style.background = '#8b4513';
+            }, 1000);
+        }
+        
+        // Update cart display
+        function updateCartDisplay() {
+            const cartItems = document.getElementById('cartItems');
+            const cartTotal = document.getElementById('cartTotal');
+            
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<p style="text-align: center; opacity: 0.7;">No items selected yet. Browse our menu above!</p>';
+                cartTotal.textContent = 'Total: Rs. 0';
+                return;
+            }
+            
+            cartItems.innerHTML = cart.map(item => `
+                <div class="cart-item">
+                    <div>
+                        <strong>${item.name}</strong><br>
+                        <small>Rs. ${item.price} x ${item.quantity}</small>
+                    </div>
+                    <div>
+                        <button onclick="changeQuantity(${item.id}, -1)" style="background: #dc3545; color: white; border: none; padding: 5px 10px; border-radius: 3px; cursor: pointer;">-</button>
+                        <span style="margin: 0 10px;">${item.quantity}</span>
+                        <button onclick="changeQuantity(${item.id}, 1)" style="background: #28a745; color: white; border: none; padding: 5px 10px; border-radius: 3px; cursor: pointer;">+</button>
+                    </div>
+                </div>
+            `).join('');
+            
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            cartTotal.textContent = `Total: Rs. ${total}`;
+        }
+        
+        // Change item quantity
+        function changeQuantity(itemId, change) {
+            const item = cart.find(c => c.id === itemId);
+            if (item) {
+                item.quantity += change;
+                if (item.quantity <= 0) {
+                    cart = cart.filter(c => c.id !== itemId);
+                }
+                updateCartDisplay();
+            }
+        }
+        
+        // Handle form submission
+        document.getElementById('orderForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            if (cart.length === 0) {
+                alert('Please add items to your cart before placing an order!');
+                return;
+            }
+            
+            const formData = new FormData(this);
+            const orderData = {
+                items: cart,
+                customer: {
+                    name: formData.get('name'),
+                    phone: formData.get('phone'),
+                    address: formData.get('address'),
+                    deliveryTime: formData.get('deliveryTime'),
+                    instructions: formData.get('instructions')
+                },
+                total: cart.reduce((sum, item) => sum + (item.price * item.quantity), 0)
+            };
+            
+            // Simulate order submission
+            alert(`🎉 Order Confirmed!\n\nThank you ${orderData.customer.name}!\n\nYour delicious Bannu Beef Pulao will be delivered to:\n${orderData.customer.address}\n\nTotal: Rs. ${orderData.total}\n\nEstimated delivery: 30-45 minutes\n\nWe'll call you at ${orderData.customer.phone} for confirmation.`);
+            
+            // Reset form and cart
+            this.reset();
+            cart = [];
+            updateCartDisplay();
+        });
+        
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Initialize
+        populateMenu();
+    </script>
+</body>
+</html>

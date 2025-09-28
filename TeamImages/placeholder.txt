@@ -1,0 +1,10 @@
+Team Image Placeholders:
+
+1. syed-qaim-raza.jpg - AI/ML Expert
+2. muhammad-shahzeb-malik.jpg - Team Lead & Full-Stack Developer  
+3. saqib-shabbir.jpg - Data Management & Virtual Assistant
+4. usama-saddique.jpg - Lead Generation & Shopify Specialist
+5. zohaib-ahmad.jpg - Virtual Assistant & Flutter Developer
+6. usman.jpg - Flutter Full-Stack Developer
+
+Replace these with actual professional headshots (recommended size: 300x300px, format: JPG/PNG)
