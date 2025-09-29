@@ -39,8 +39,18 @@ body {
 
 .logo {
     font-size: 1.5rem;
-    font-weight: bold;
+    font-family: 'Georgia', 'Times New Roman', serif;
+    font-weight: 600;
     color: #2563eb;
+    -webkit-text-stroke: 1px transparent;
+    background: linear-gradient(45deg, white, #ffd700);
+    -webkit-background-clip: text;
+    background-clip: text;
+    text-shadow: none;
+    border: 1px solid;
+    border-image: linear-gradient(45deg, white, #ffd700) 1;
+    padding: 8px 12px;
+    border-radius: 4px;
 }
 
 .nav-menu {
