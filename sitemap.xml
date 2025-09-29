@@ -1,21 +1,98 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <!-- Main Pages -->
     <url>
-        <loc>https://virtualsupportgroup.com/</loc>
+        <loc>https://virtualsupportgroup.studio/</loc>
         <lastmod>2024-09-29</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
-        <loc>https://virtualsupportgroup.com/about/</loc>
+        <loc>https://virtualsupportgroup.studio/about/</loc>
         <lastmod>2024-09-29</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://virtualsupportgroup.com/thank-you.html</loc>
+        <loc>https://virtualsupportgroup.studio/thank-you.html</loc>
         <lastmod>2024-09-29</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
+    </url>
+    
+    <!-- Project Pages -->
+    <url>
+        <loc>https://virtualsupportgroup.studio/projects/bannu-beef-pulao.html</loc>
+        <lastmod>2024-09-29</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://virtualsupportgroup.studio/projects/analytics-dashboard.html</loc>
+        <lastmod>2024-09-29</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://virtualsupportgroup.studio/projects/business-website.html</loc>
+        <lastmod>2024-09-29</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://virtualsupportgroup.studio/projects/ecommerce-store.html</loc>
+        <lastmod>2024-09-29</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://virtualsupportgroup.studio/projects/ml-recommendation-system.html</loc>
+        <lastmod>2024-09-29</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://virtualsupportgroup.studio/projects/ml-stock-predictor.html</loc>
+        <lastmod>2024-09-29</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://virtualsupportgroup.studio/projects/ml-image-classifier.html</loc>
+        <lastmod>2024-09-29</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://virtualsupportgroup.studio/projects/nlp-analyzer.html</loc>
+        <lastmod>2024-09-29</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://virtualsupportgroup.studio/projects/database-automation.html</loc>
+        <lastmod>2024-09-29</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://virtualsupportgroup.studio/projects/browser-games-hub.html</loc>
+        <lastmod>2024-09-29</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <!-- Demo Pages -->
+    <url>
+        <loc>https://virtualsupportgroup.studio/chrome-extension/</loc>
+        <lastmod>2024-09-29</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://virtualsupportgroup.studio/games-website/</loc>
+        <lastmod>2024-09-29</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
     </url>
 </urlset>
