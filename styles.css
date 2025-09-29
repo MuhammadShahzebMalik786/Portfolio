@@ -80,6 +80,11 @@ body {
     text-transform: uppercase;
 }
 
+.logo-image {
+    height: 40px;
+    width: auto;
+}
+
 .logo-group {
     font-family: 'Arial', sans-serif;
     font-weight: bold;
