@@ -66,16 +66,16 @@ body {
 .logo-virtual {
     font-family: 'Brush Script MT', cursive, 'Dancing Script', handwriting;
     font-weight: 300;
-    color: #ffffff;
-    text-shadow: 0 2px 4px rgba(255,255,255,0.3);
+    color: #2563eb;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
     font-style: italic;
 }
 
 .logo-support {
     font-family: 'Impact', 'Arial Black', sans-serif;
     font-weight: 900;
-    color: #ffffff;
-    text-shadow: 0 2px 4px rgba(255,255,255,0.3);
+    color: #2563eb;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
     letter-spacing: 1px;
     text-transform: uppercase;
 }
