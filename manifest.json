@@ -1,0 +1,21 @@
+{
+  "name": "Virtual Support Group",
+  "short_name": "VSG",
+  "description": "Expert Web Development, AI/ML Solutions & Virtual Assistant Services",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#2563eb",
+  "icons": [
+    {
+      "src": "logo/apple-touch-icon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "logo/vsg-logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
