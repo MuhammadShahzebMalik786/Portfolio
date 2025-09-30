@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#2563eb">
     <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://formspree.io">
     <title>Virtual Assistant Services | AI/ML & Web Development</title>
     <meta name="description" content="Expert virtual assistant services, Flutter app development, AI/ML solutions, Shopify management & lead generation. Professional team in Pakistan.">
     <meta name="keywords" content="virtual assistant, flutter development, AI machine learning, shopify management, lead generation, web development, data analysis, virtual support, business automation, e-commerce solutions, cold calling, email marketing, project management">
@@ -16,7 +21,26 @@
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-        gtag('config', 'G-43KTS59KTK');
+        gtag('config', 'G-43KTS59KTK', {
+            debug_mode: true,
+            send_page_view: true
+        });
+        
+        // Track form submissions
+        function trackFormSubmission() {
+            gtag('event', 'form_submit', {
+                event_category: 'Contact',
+                event_label: 'Contact Form'
+            });
+        }
+        
+        // Track button clicks
+        function trackButtonClick(buttonName) {
+            gtag('event', 'click', {
+                event_category: 'Button',
+                event_label: buttonName
+            });
+        }
     </script>
     <!-- End Google Analytics -->
     
@@ -122,6 +146,9 @@
     <link rel="stylesheet" href="enhanced-styles.css">
 </head>
 <body>
+    <!-- Skip Navigation for Accessibility -->
+    <a href="#main-content" class="skip-nav" style="position:absolute;top:-40px;left:0;background:#2563eb;color:white;padding:8px;text-decoration:none;z-index:1000;" onfocus="this.style.top='0'" onblur="this.style.top='-40px'">Skip to main content</a>
+    
     <!-- Navigation -->
     <nav class="navbar" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
         <div class="nav-container">
@@ -147,14 +174,16 @@
 
     <!-- Hero Section -->
     <section id="home" class="hero">
+        <main id="main-content">
         <div class="hero-content">
             <h1>Expert Virtual Support Team | Web Development & AI Solutions</h1>
             <p class="tagline">Virtual Support Group - Your trusted partner for Flutter development, AI/ML solutions, Shopify management, lead generation, and comprehensive virtual assistant services. We transform businesses through cutting-edge technology and dedicated support.</p>
             <div class="hero-buttons">
-                <a href="#contact" class="btn-primary">Start Your Project Today</a>
-                <a href="#services" class="btn-secondary">Explore Our Services</a>
+                <a href="#contact" class="btn-primary" onclick="trackButtonClick('Start Project')">Start Your Project Today</a>
+                <a href="#services" class="btn-secondary" onclick="trackButtonClick('Explore Services')">Explore Our Services</a>
             </div>
         </div>
+        </main>
     </section>
 
     <!-- About Section -->
@@ -343,7 +372,7 @@
             <div class="portfolio-grid">
                 
                 <div class="project-card">
-                    <div class="project-image"><img src="Assets/project_img400x250/GameHub.png" alt="Browser Games Hub"></div>
+                    <div class="project-image"><img src="Assets/project_img400x250/GameHub.png" alt="Browser Games Hub" loading="lazy"></div>
                     <h4>🎮 Browser Games Hub</h4>
                     <p>Interactive gaming platform with 10+ browser games, user authentication, leaderboards, and responsive design</p>
                     <div class="project-tags">
@@ -355,7 +384,7 @@
                 </div>
 
                 <div class="project-card">
-                    <div class="project-image"><img src="Assets/project_img400x250/Innovative website.png" alt="Modern Business Website"></div>
+                    <div class="project-image"><img src="Assets/project_img400x250/Innovative website.png" alt="Modern Business Website" loading="lazy"></div>
                     <h4>Modern Business Website</h4>
                     <p>Responsive website built with HTML, CSS, JavaScript featuring modern design and fast loading times</p>
                     <div class="project-tags">
@@ -646,9 +675,11 @@
                 </div>
                 
                 <div class="contact-form">
-                    <form action="https://formspree.io/f/xgvnaeyv" method="POST">
+                    <form action="https://formspree.io/f/xgvnaeyv" method="POST" onsubmit="trackFormSubmission()">
                         <input type="text" name="name" placeholder="Your Name" required>
                         <input type="email" name="email" placeholder="Your Email" required>
+                        <!-- Honeypot field for spam protection -->
+                        <input type="text" name="_gotcha" style="display:none !important">
                         <select name="service" required>
                             <option value="">Select Service</option>
                             <option value="ai-ml">AI & Machine Learning</option>
@@ -664,6 +695,7 @@
                         </select>
                         <textarea name="message" placeholder="Describe your project and requirements..." rows="5" required></textarea>
                         <input type="hidden" name="_subject" value="New Project Inquiry - Virtual Support Group">
+                        <input type="hidden" name="_next" value="https://virtualsupportgroup.studio/thank-you.html">
                         <button type="submit" class="btn-primary">Send Message</button>
                     </form>
                 </div>
@@ -698,6 +730,27 @@
     if (window.location.pathname.endsWith('/index.html')) {
         window.history.replaceState({}, document.title, window.location.pathname.replace('/index.html', '/'));
     }
+    
+    // Performance monitoring
+    window.addEventListener('load', function() {
+        if ('performance' in window) {
+            const loadTime = performance.timing.loadEventEnd - performance.timing.navigationStart;
+            if (loadTime > 3000) {
+                gtag('event', 'page_load_slow', {
+                    event_category: 'Performance',
+                    value: Math.round(loadTime)
+                });
+            }
+        }
+    });
+    
+    // Error tracking
+    window.addEventListener('error', function(e) {
+        gtag('event', 'javascript_error', {
+            event_category: 'Error',
+            event_label: e.message
+        });
+    });
     </script>
 </body>
 </html>
