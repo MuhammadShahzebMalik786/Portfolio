@@ -11,15 +11,15 @@
 
 ### Google Search Console:
 1. Go to https://search.google.com/search-console
-2. Add your domain: virtualsupportgroup.com
+2. Add your domain: virtualsupportgroup.studio
 3. Verify ownership using the `google-site-verification.html` file
-4. Submit your sitemap: https://virtualsupportgroup.com/sitemap.xml
+4. Submit your sitemap: https://virtualsupportgroup.studio/sitemap.xml
 
 ### Bing Webmaster Tools:
 1. Go to https://www.bing.com/webmasters
-2. Add your site: virtualsupportgroup.com
+2. Add your site: virtualsupportgroup.studio
 3. Verify using the `BingSiteAuth.xml` file
-4. Submit your sitemap: https://virtualsupportgroup.com/sitemap.xml
+4. Submit your sitemap: https://virtualsupportgroup.studio/sitemap.xml
 
 ### Other Search Engines:
 - **Yandex**: https://webmaster.yandex.com

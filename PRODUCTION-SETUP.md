@@ -109,7 +109,7 @@ Portfolio/
 ## 🌐 Domain & Hosting Recommendations
 
 ### Domain Setup
-- Primary: `virtualsupportgroup.com`
+- Primary: `virtualsupportgroup.studio`
 - Alternative: `virtualsupportgroup.net`
 
 ### Hosting Requirements

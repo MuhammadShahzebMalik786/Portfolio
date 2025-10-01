@@ -6,7 +6,7 @@
 3. **404.html** - ✅ SEO optimized error page
 
 ## ✅ Domain Updates:
-- Changed all URLs from `virtualsupportgroup.com` to `virtualsupportgroup.studio`
+- Changed all URLs from `virtualsupportgroup.studio` to `virtualsupportgroup.studio`
 - Updated sitemap.xml with correct domain
 - Fixed canonical URLs and social sharing links
 
