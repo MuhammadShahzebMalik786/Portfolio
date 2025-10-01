@@ -11,7 +11,7 @@
     AddOutputFilterByType DEFLATE application/x-javascript
 </IfModule>
 
-# Browser caching
+# Browser caching with enhanced expires headers
 <IfModule mod_expires.c>
     ExpiresActive on
     ExpiresByType text/css "access plus 1 year"
@@ -22,13 +22,23 @@
     ExpiresByType image/gif "access plus 1 year"
     ExpiresByType image/svg+xml "access plus 1 year"
     ExpiresByType image/x-icon "access plus 1 year"
+    ExpiresByType image/webp "access plus 1 year"
+    ExpiresByType image/avif "access plus 1 year"
     ExpiresByType application/pdf "access plus 1 month"
+    ExpiresByType text/html "access plus 1 hour"
 </IfModule>
 
-# Cache-Control headers
+# Enhanced Cache-Control headers for images
 <IfModule mod_headers.c>
-    <FilesMatch "\.(css|js|png|jpg|jpeg|gif|svg|ico)$">
-        Header set Cache-Control "max-age=31536000, public"
+    <FilesMatch "\.(css|js)$">
+        Header set Cache-Control "max-age=31536000, public, immutable"
+    </FilesMatch>
+    <FilesMatch "\.(png|jpg|jpeg|gif|svg|ico|webp|avif)$">
+        Header set Cache-Control "max-age=31536000, public, immutable"
+        Header set Expires "Thu, 31 Dec 2025 23:59:59 GMT"
+    </FilesMatch>
+    <FilesMatch "\.(html|htm)$">
+        Header set Cache-Control "max-age=3600, public"
     </FilesMatch>
 </IfModule>
 
