@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>n8n Production Dashboard | Virtual Support Group</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', sans-serif; background: linear-gradient(135deg, #667eea, #764ba2); min-height: 100vh; }
+        
+        .header { text-align: center; padding: 2rem 0; color: white; }
+        .header h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+        
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .content { background: white; border-radius: 15px; padding: 3rem; margin: 2rem 0; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+        
+        .project-image { text-align: center; margin: 2rem 0; }
+        .project-image img { max-width: 100%; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        
+        .metrics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin: 2rem 0; }
+        .metric-card { background: linear-gradient(135deg, #1e293b, #334155); color: white; padding: 2rem; border-radius: 15px; text-align: center; }
+        .metric-number { font-size: 3rem; font-weight: bold; color: #10b981; margin-bottom: 0.5rem; }
+        .metric-label { font-size: 1.1rem; opacity: 0.9; }
+        
+        .workflows-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin: 2rem 0; }
+        .workflow-item { background: #f8fafc; padding: 1.5rem; border-radius: 10px; border-left: 4px solid #10b981; }
+        .workflow-item h3 { color: #1e293b; margin-bottom: 1rem; }
+        
+        .tech-stack { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 2rem 0; }
+        .tech-item { background: #2563eb; color: white; padding: 1rem; border-radius: 8px; text-align: center; }
+        
+        .achievement-badge { background: #dcfce7; color: #166534; padding: 0.5rem 1rem; border-radius: 20px; display: inline-block; margin: 0.25rem; font-weight: 500; }
+        
+        .back-link { position: fixed; top: 20px; right: 20px; background: rgba(255,255,255,0.2); color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; z-index: 1000; }
+        .cta-button { background: #10b981; color: white; padding: 1rem 2rem; border-radius: 5px; text-decoration: none; display: inline-block; margin-top: 1rem; }
+    </style>
+</head>
+<body>
+    <a href="../index.html" class="back-link">← Back to Portfolio</a>
+    
+    <header class="header">
+        <h1>📊 n8n Production Dashboard</h1>
+        <p>Enterprise-Scale Automation System Performance</p>
+    </header>
+
+    <div class="container">
+        <div class="content">
+            <div class="project-image">
+                <img src="../Assets/project_img400x250/n8n overall ince.png" alt="n8n Production Dashboard">
+            </div>
+
+            <h2>🎯 System Overview</h2>
+            <p>This is a production-grade n8n automation system running multiple business-critical workflows with enterprise-level performance metrics. The dashboard showcases real-world usage across various business domains including customer support, social media management, and e-commerce operations.</p>
+
+            <h2>📈 Performance Metrics (7 Days)</h2>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-number">15,406</div>
+                    <div class="metric-label">Total Executions</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-number">2</div>
+                    <div class="metric-label">Total Failures</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-number">0%</div>
+                    <div class="metric-label">Failure Rate</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-number">0.02s</div>
+                    <div class="metric-label">Avg Runtime</div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin: 2rem 0;">
+                <span class="achievement-badge">🚀 High Volume Production</span>
+                <span class="achievement-badge">💯 99.99% Success Rate</span>
+                <span class="achievement-badge">⚡ Lightning Fast</span>
+                <span class="achievement-badge">🔄 24/7 Uptime</span>
+            </div>
+
+            <h2>🔧 Active Workflow Systems</h2>
+            <div class="workflows-grid">
+                <div class="workflow-item">
+                    <h3>🤖 AI Agent</h3>
+                    <p>Intelligent automation agent handling complex decision-making processes and customer interactions with AI-powered responses.</p>
+                </div>
+                
+                <div class="workflow-item">
+                    <h3>📊 ProjectSoft</h3>
+                    <p>Project management automation system for task tracking, deadline monitoring, and team collaboration workflows.</p>
+                </div>
+                
+                <div class="workflow-item">
+                    <h3>🔍 SerpApi</h3>
+                    <p>Search engine results processing and data extraction automation for competitive analysis and market research.</p>
+                </div>
+                
+                <div class="workflow-item">
+                    <h3>🎧 Multi-Channel Help Desk</h3>
+                    <p>Unified customer support system handling tickets across multiple channels with automated routing and response generation.</p>
+                </div>
+                
+                <div class="workflow-item">
+                    <h3>📱 Daily Auto Social Poster</h3>
+                    <p>Automated social media content scheduling and posting across multiple platforms with engagement tracking.</p>
+                </div>
+                
+                <div class="workflow-item">
+                    <h3>🛒 Ecommerce Post Purchase Engine</h3>
+                    <p>Complete post-purchase automation including order confirmations, shipping updates, feedback collection, and customer retention campaigns.</p>
+                </div>
+            </div>
+
+            <h2>⚙️ Technical Architecture</h2>
+            <div class="tech-stack">
+                <div class="tech-item">
+                    <h4>🔧 Platform</h4>
+                    <p>n8n Enterprise</p>
+                </div>
+                <div class="tech-item">
+                    <h4>🤖 AI Integration</h4>
+                    <p>OpenAI GPT Models</p>
+                </div>
+                <div class="tech-item">
+                    <h4>📊 Data Storage</h4>
+                    <p>Google Workspace</p>
+                </div>
+                <div class="tech-item">
+                    <h4>🔗 API Integrations</h4>
+                    <p>50+ Services</p>
+                </div>
+                <div class="tech-item">
+                    <h4>📧 Communication</h4>
+                    <p>Multi-Channel SMTP</p>
+                </div>
+                <div class="tech-item">
+                    <h4>🔄 Triggers</h4>
+                    <p>Webhooks & Schedules</p>
+                </div>
+            </div>
+
+            <h2>🏆 Key Achievements</h2>
+            <ul style="margin: 1rem 0; padding-left: 2rem; line-height: 1.8;">
+                <li>🚀 <strong>High-Volume Processing:</strong> 15,406+ executions in 7 days</li>
+                <li>💯 <strong>Enterprise Reliability:</strong> 99.99% success rate</li>
+                <li>⚡ <strong>Lightning Performance:</strong> 0.02s average execution time</li>
+                <li>🔄 <strong>Multi-Domain Automation:</strong> Customer support, social media, e-commerce</li>
+                <li>🤖 <strong>AI-Powered Intelligence:</strong> Smart decision making and responses</li>
+                <li>📊 <strong>Real-Time Monitoring:</strong> Live performance tracking and alerts</li>
+                <li>🔧 <strong>Scalable Architecture:</strong> Handles enterprise-level workloads</li>
+            </ul>
+
+            <h2>💼 Business Impact</h2>
+            <p>This automation system represents a complete digital transformation solution that:</p>
+            <ul style="margin: 1rem 0; padding-left: 2rem; line-height: 1.8;">
+                <li>Eliminates manual repetitive tasks across multiple business functions</li>
+                <li>Provides 24/7 automated customer support and engagement</li>
+                <li>Scales business operations without proportional staff increases</li>
+                <li>Maintains consistent quality and response times</li>
+                <li>Integrates seamlessly with existing business tools and platforms</li>
+            </ul>
+
+            <div style="text-align: center; margin-top: 3rem;">
+                <h2>Scale Your Business with Enterprise Automation</h2>
+                <p>Ready to implement a production-grade automation system for your business?</p>
+                <a href="../index.html#contact" class="cta-button">Get Enterprise Automation →</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
