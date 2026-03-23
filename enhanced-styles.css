@@ -1,5 +1,17 @@
 /* Enhanced Visual Styles for Virtual Support Group */
 
+:root {
+    --alabaster-grey: #cfdbd5ff;
+    --soft-linen: #e8eddfff;
+    --tuscan-sun: #f5cb5cff;
+    --carbon-black: #242423ff;
+    --graphite: #333533ff;
+    --soft-linen-rgb: 232, 237, 223;
+    --tuscan-sun-rgb: 245, 203, 92;
+    --carbon-black-rgb: 36, 36, 35;
+    --graphite-rgb: 51, 53, 51;
+}
+
 /* Mobile Navigation */
 .hamburger {
     display: none;
@@ -11,7 +23,7 @@
 .hamburger span {
     width: 25px;
     height: 3px;
-    background: white;
+    background: var(--soft-linen);
     margin: 3px 0;
     transition: 0.3s;
 }
@@ -38,7 +50,7 @@
         left: -100%;
         top: 70px;
         flex-direction: column;
-        background: rgba(37, 99, 235, 0.95);
+        background: rgba(var(--tuscan-sun-rgb), 0.95);
         width: 100%;
         text-align: center;
         transition: 0.3s;
@@ -63,7 +75,7 @@
 
 /* Logo styling */
 .logo {
-    background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+    background: linear-gradient(135deg, var(--tuscan-sun) 0%, var(--graphite) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -73,7 +85,7 @@
 
 /* Enhanced hero section */
 .hero {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #2563eb 100%);
+    background: linear-gradient(135deg, var(--tuscan-sun) 0%, var(--graphite) 50%, var(--tuscan-sun) 100%);
     position: relative;
     overflow: hidden;
 }
@@ -85,7 +97,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="rgba(232,237,223,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
     opacity: 0.3;
 }
 
@@ -98,12 +110,12 @@
 
 .btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
+    box-shadow: 0 10px 25px rgba(var(--tuscan-sun-rgb), 0.3);
 }
 
 .btn-secondary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 10px 25px rgba(124, 58, 237, 0.3);
+    box-shadow: 0 10px 25px rgba(var(--graphite-rgb), 0.3);
 }
 
 /* Enhanced service cards */
@@ -114,8 +126,8 @@
 
 .service-category:hover {
     transform: translateY(-5px);
-    border-left-color: #2563eb;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    border-left-color: var(--tuscan-sun);
+    box-shadow: 0 15px 35px rgba(var(--carbon-black-rgb), 0.1);
 }
 
 /* Enhanced stats */
@@ -124,7 +136,7 @@
 }
 
 .stat h3 {
-    background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+    background: linear-gradient(135deg, var(--tuscan-sun) 0%, var(--graphite) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;

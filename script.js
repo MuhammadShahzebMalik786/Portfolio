@@ -73,7 +73,7 @@ window.addEventListener('scroll', () => {
     const navbar = document.querySelector('.navbar');
     if (navbar) {
         if (window.scrollY > 50) {
-            navbar.style.background = 'rgba(37, 99, 235, 0.95)';
+            navbar.style.background = 'rgba(36, 36, 35, 0.95)';
             navbar.style.backdropFilter = 'blur(10px)';
         } else {
             navbar.style.background = 'transparent';

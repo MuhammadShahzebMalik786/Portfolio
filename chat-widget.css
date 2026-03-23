@@ -1,0 +1,116 @@
+#root, :root {
+  --alabaster-grey: #cfdbd5ff;
+  --soft-linen: #e8eddfff;
+  --tuscan-sun: #f5cb5cff;
+  --carbon-black: #242423ff;
+  --graphite: #333533ff;
+  --soft-linen-rgb: 232, 237, 223;
+  --tuscan-sun-rgb: 245, 203, 92;
+  --carbon-black-rgb: 36, 36, 35;
+  --graphite-rgb: 51, 53, 51;
+}
+
+#chat-toggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, var(--tuscan-sun), var(--graphite));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--carbon-black);
+  cursor: pointer;
+  box-shadow: 0 8px 25px rgba(var(--tuscan-sun-rgb), 0.4);
+  z-index: 1000;
+  transition: all 0.3s ease;
+  border: none;
+}
+
+#chat-toggle:hover {
+  transform: scale(1.1);
+  box-shadow: 0 12px 35px rgba(var(--tuscan-sun-rgb), 0.6);
+}
+
+#chat-popup {
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  width: 320px;
+  height: 400px;
+  background: var(--soft-linen);
+  border-radius: 15px;
+  box-shadow: 0 15px 50px rgba(var(--carbon-black-rgb), 0.2);
+  display: none;
+  flex-direction: column;
+  z-index: 1001;
+}
+
+.chat-header {
+  background: linear-gradient(135deg, var(--tuscan-sun), var(--graphite));
+  color: var(--carbon-black);
+  padding: 15px;
+  border-radius: 15px 15px 0 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chat-header h3 {
+  margin: 0;
+  font-size: 16px;
+}
+
+#chat-close {
+  background: none;
+  border: none;
+  color: var(--carbon-black);
+  font-size: 20px;
+  cursor: pointer;
+  width: 25px;
+  height: 25px;
+}
+
+.chat-messages {
+  flex: 1;
+  padding: 15px;
+  overflow-y: auto;
+}
+
+.message {
+  margin-bottom: 10px;
+  padding: 8px 12px;
+  border-radius: 10px;
+  font-size: 14px;
+}
+
+.message.bot {
+  background: var(--alabaster-grey);
+  color: var(--graphite);
+}
+
+.chat-input {
+  padding: 15px;
+  border-top: 1px solid var(--alabaster-grey);
+  display: flex;
+  gap: 8px;
+}
+
+#message-input {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid var(--alabaster-grey);
+  border-radius: 20px;
+  outline: none;
+}
+
+#send-btn {
+  background: var(--tuscan-sun);
+  color: var(--carbon-black);
+  border: none;
+  padding: 8px 15px;
+  border-radius: 20px;
+  cursor: pointer;
+}
