@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -46,29 +46,29 @@
     </style>
 </head>
 <body>
-    <a href="../index.html" class="back-link">← Back to Portfolio</a>
+    <a href="../index.html" class="back-link">â† Back to Portfolio</a>
     
     <header class="header">
-        <h1>🤖 NLP Content Analyzer</h1>
+        <h1>ðŸ¤– NLP Content Analyzer</h1>
         <p>Advanced text analysis using Natural Language Processing</p>
     </header>
 
     <div class="container">
         <div class="tool-grid">
             <div class="input-section">
-                <h2>📝 Input Text</h2>
+                <h2>ðŸ“ Input Text</h2>
                 <div class="demo-text">
                     <h4>Try these sample texts:</h4>
-                    <p onclick="loadSample(1)">→ Positive product review</p>
-                    <p onclick="loadSample(2)">→ Negative feedback</p>
-                    <p onclick="loadSample(3)">→ Neutral business content</p>
+                    <p onclick="loadSample(1)">â†’ Positive product review</p>
+                    <p onclick="loadSample(2)">â†’ Negative feedback</p>
+                    <p onclick="loadSample(3)">â†’ Neutral business content</p>
                 </div>
                 <textarea id="inputText" placeholder="Enter your text here for analysis..."></textarea>
-                <button class="analyze-btn" onclick="analyzeText()">🔍 Analyze Text</button>
+                <button class="analyze-btn" onclick="analyzeText()">ðŸ” Analyze Text</button>
             </div>
             
             <div class="results-section">
-                <h2>📊 Analysis Results</h2>
+                <h2>ðŸ“Š Analysis Results</h2>
                 <div id="results">
                     <p style="color: #64748b; text-align: center; padding: 2rem;">Enter text and click analyze to see results</p>
                 </div>
@@ -76,22 +76,22 @@
         </div>
         
         <div class="input-section">
-            <h2>🎯 Features Demonstrated</h2>
+            <h2>ðŸŽ¯ Features Demonstrated</h2>
             <div class="metrics">
                 <div class="metric-card">
-                    <div class="metric-value">✓</div>
+                    <div class="metric-value">âœ“</div>
                     <div class="metric-label">Sentiment Analysis</div>
                 </div>
                 <div class="metric-card">
-                    <div class="metric-value">✓</div>
+                    <div class="metric-value">âœ“</div>
                     <div class="metric-label">Keyword Extraction</div>
                 </div>
                 <div class="metric-card">
-                    <div class="metric-value">✓</div>
+                    <div class="metric-value">âœ“</div>
                     <div class="metric-label">Text Statistics</div>
                 </div>
                 <div class="metric-card">
-                    <div class="metric-value">✓</div>
+                    <div class="metric-value">âœ“</div>
                     <div class="metric-label">Readability Score</div>
                 </div>
             </div>
@@ -178,7 +178,7 @@
             const resultsDiv = document.getElementById('results');
             
             const sentimentClass = analysis.sentiment;
-            const sentimentEmoji = analysis.sentiment === 'positive' ? '😊' : analysis.sentiment === 'negative' ? '😞' : '😐';
+            const sentimentEmoji = analysis.sentiment === 'positive' ? 'ðŸ˜Š' : analysis.sentiment === 'negative' ? 'ðŸ˜ž' : 'ðŸ˜';
             
             resultsDiv.innerHTML = `
                 <div class="sentiment ${sentimentClass}">
@@ -205,11 +205,14 @@
                 </div>
                 
                 <div class="keywords">
-                    <h4 style="margin-bottom: 0.5rem; color: #1e293b;">🔑 Key Terms:</h4>
+                    <h4 style="margin-bottom: 0.5rem; color: #1e293b;">ðŸ”‘ Key Terms:</h4>
                     ${analysis.keywords.map(keyword => `<span class="keyword-tag">${keyword}</span>`).join('')}
                 </div>
             `;
         }
     </script>
+<script src="./universe-background.js"></script>
 </body>
 </html>
+
+

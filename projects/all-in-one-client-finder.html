@@ -1,0 +1,545 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All-in-one Client Finder | Virtual Support Group</title>
+    <meta name="description" content="AI-powered lead generation and outreach automation toolkit with LinkedIn and Google Maps discovery, contact extraction, AI email drafting, SMTP sending, and local Ollama fallback.">
+    <style>
+        :root {
+            --bg-1: #0a1324;
+            --bg-2: #111f36;
+            --panel: #112847;
+            --panel-soft: #17355f;
+            --line: #1f4c82;
+            --text: #e7f2ff;
+            --muted: #a9c4df;
+            --blue: #3ca8ff;
+            --cyan: #4fe0ff;
+            --success: #4ade80;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            background:
+                radial-gradient(circle at 20% 10%, rgba(79, 224, 255, 0.14), transparent 38%),
+                radial-gradient(circle at 88% 18%, rgba(60, 168, 255, 0.12), transparent 34%),
+                linear-gradient(150deg, var(--bg-1), var(--bg-2));
+            color: var(--text);
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        .space-canvas {
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .header,
+        .container,
+        .github-link {
+            position: relative;
+            z-index: 1;
+        }
+
+        .back-link {
+            position: fixed;
+            top: 18px;
+            right: 18px;
+            text-decoration: none;
+            color: var(--text);
+            border: 1px solid rgba(79, 224, 255, 0.4);
+            background: rgba(10, 19, 36, 0.6);
+            padding: 10px 16px;
+            border-radius: 8px;
+            -webkit-backdrop-filter: blur(6px);
+            backdrop-filter: blur(6px);
+            z-index: 20;
+        }
+
+        .mb-24 {
+            margin-bottom: 24px;
+        }
+
+        .header {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 84px 20px 24px;
+        }
+
+        .eyebrow {
+            color: var(--cyan);
+            font-size: 0.9rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .header h1 {
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            line-height: 1.15;
+            margin-bottom: 12px;
+        }
+
+        .header p {
+            color: var(--muted);
+            max-width: 860px;
+            font-size: 1.03rem;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .dashboard {
+            display: grid;
+            grid-template-columns: 1.3fr 1fr;
+            gap: 18px;
+            margin-bottom: 26px;
+        }
+
+        .panel {
+            background: linear-gradient(160deg, rgba(23, 53, 95, 0.95), rgba(17, 40, 71, 0.96));
+            border: 1px solid rgba(79, 224, 255, 0.2);
+            border-radius: 14px;
+            box-shadow: 0 16px 38px rgba(3, 10, 24, 0.45);
+            overflow: hidden;
+        }
+
+        .panel-header {
+            padding: 16px 18px;
+            border-bottom: 1px solid rgba(79, 224, 255, 0.15);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .panel-title {
+            font-size: 1rem;
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        .chip {
+            color: var(--cyan);
+            border: 1px solid rgba(79, 224, 255, 0.4);
+            border-radius: 999px;
+            padding: 4px 10px;
+            font-size: 0.78rem;
+        }
+
+        .pipeline {
+            padding: 16px;
+            display: grid;
+            grid-template-columns: repeat(4, minmax(150px, 1fr));
+            gap: 12px;
+            align-items: center;
+            overflow-x: auto;
+        }
+
+        .stage {
+            min-height: 120px;
+            border: 1px solid rgba(60, 168, 255, 0.3);
+            border-radius: 12px;
+            padding: 12px;
+            background: rgba(10, 19, 36, 0.56);
+            position: relative;
+        }
+
+        .stage h3 {
+            font-size: 0.94rem;
+            margin-bottom: 8px;
+            color: var(--cyan);
+        }
+
+        .stage p {
+            font-size: 0.84rem;
+            line-height: 1.45;
+            color: var(--muted);
+        }
+
+        .stage::after {
+            content: "";
+            position: absolute;
+            right: -10px;
+            top: 50%;
+            width: 20px;
+            height: 2px;
+            background: linear-gradient(90deg, rgba(79, 224, 255, 0.2), rgba(79, 224, 255, 0.9));
+            transform: translateY(-50%);
+            box-shadow: 0 0 10px rgba(79, 224, 255, 0.75);
+        }
+
+        .stage:last-child::after { display: none; }
+
+        .right-stack {
+            display: grid;
+            gap: 18px;
+        }
+
+        .stats {
+            padding: 16px;
+            display: grid;
+            grid-template-columns: repeat(2, minmax(120px, 1fr));
+            gap: 10px;
+        }
+
+        .stat {
+            background: rgba(10, 19, 36, 0.6);
+            border: 1px solid rgba(60, 168, 255, 0.3);
+            border-radius: 10px;
+            padding: 12px;
+        }
+
+        .stat .label {
+            color: var(--muted);
+            font-size: 0.8rem;
+            margin-bottom: 6px;
+        }
+
+        .stat .value {
+            color: var(--text);
+            font-size: 1.35rem;
+            font-weight: 700;
+        }
+
+        .value.success { color: var(--success); }
+
+        .contacts {
+            padding: 14px 16px 16px;
+            display: grid;
+            gap: 10px;
+        }
+
+        .contact-card {
+            border: 1px solid rgba(79, 224, 255, 0.25);
+            background: rgba(10, 19, 36, 0.56);
+            border-radius: 10px;
+            padding: 10px 12px;
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        .contact-card strong {
+            font-size: 0.92rem;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .contact-card span {
+            color: var(--muted);
+            font-size: 0.82rem;
+        }
+
+        .badge {
+            align-self: center;
+            color: var(--cyan);
+            border: 1px solid rgba(79, 224, 255, 0.4);
+            border-radius: 999px;
+            padding: 4px 8px;
+            font-size: 0.75rem;
+        }
+
+        .readme-layout {
+            display: grid;
+            grid-template-columns: 1.3fr 1fr;
+            gap: 18px;
+            margin-bottom: 18px;
+        }
+
+        .section {
+            padding: 18px;
+        }
+
+        .section h2 {
+            margin-bottom: 12px;
+            font-size: 1.2rem;
+            color: var(--cyan);
+        }
+
+        .section p,
+        .section li {
+            color: var(--muted);
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        ul { padding-left: 20px; }
+
+        .stack {
+            display: grid;
+            gap: 18px;
+        }
+
+        .code-box {
+            border: 1px solid rgba(79, 224, 255, 0.25);
+            background: rgba(10, 19, 36, 0.62);
+            border-radius: 10px;
+            padding: 12px;
+            font-family: Consolas, "Courier New", monospace;
+            color: #d9efff;
+            overflow-x: auto;
+            font-size: 0.87rem;
+            line-height: 1.55;
+        }
+
+        .flow-note {
+            margin-top: 8px;
+            color: #b7d7f2;
+            font-size: 0.88rem;
+        }
+
+        .node-strip {
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            gap: 8px;
+            margin-top: 12px;
+        }
+
+        .node {
+            height: 8px;
+            border-radius: 20px;
+            background: linear-gradient(90deg, rgba(79, 224, 255, 0.1), rgba(79, 224, 255, 0.9));
+            animation: pulse 2.2s infinite;
+        }
+
+        .node:nth-child(even) { animation-delay: 0.4s; }
+        .node:nth-child(3n) { animation-delay: 0.8s; }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.25; transform: scaleX(0.95); }
+            50% { opacity: 1; transform: scaleX(1); }
+        }
+
+        @media (max-width: 980px) {
+            .dashboard,
+            .readme-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .pipeline {
+                grid-template-columns: repeat(4, minmax(220px, 1fr));
+            }
+        }
+
+        @media (max-width: 640px) {
+            .stats { grid-template-columns: 1fr; }
+            .header { padding-top: 90px; }
+        }
+
+        .github-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            width: 90%;
+            max-width: 900px;
+            margin: 60px auto;
+            padding: 30px 40px;
+            background: linear-gradient(135deg, #0d1117, #161b22);
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 28px;
+            font-weight: 700;
+            border-radius: 18px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+            border: 1px solid #30363d;
+            transition: all 0.3s ease;
+            font-family: system-ui, -apple-system, sans-serif;
+        }
+
+        .github-link:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 60px rgba(0, 0, 0, 0.8);
+        }
+    </style>
+</head>
+<body>
+    <canvas class="space-canvas" id="space-canvas" aria-hidden="true"></canvas>
+    <a href="../index.html" class="back-link">Back to Portfolio</a>
+
+    <header class="header">
+        <div class="eyebrow">AI Outreach Automation Case Study</div>
+        <h1>All-in-one Client Finder</h1>
+        <p>A Python automation toolkit that discovers leads, extracts contacts, drafts AI outreach, and sends emails through one CLI workflow. The interface below is designed from your image prompt with a dark slate SaaS look, blue/cyan highlights, and AI flow visualization.</p>
+    </header>
+
+    <main class="container">
+        <section class="dashboard">
+            <div class="panel">
+                <div class="panel-header">
+                    <div class="panel-title">Lead to Outreach Pipeline</div>
+                    <span class="chip">Automated Flow</span>
+                </div>
+                <div class="pipeline">
+                    <article class="stage">
+                        <h3>Lead Discovery</h3>
+                        <p>LinkedIn and Google Maps business discovery with CSV-ready exports.</p>
+                    </article>
+                    <article class="stage">
+                        <h3>Data Extraction</h3>
+                        <p>Website scanning for emails, phone numbers, and company contact signals.</p>
+                    </article>
+                    <article class="stage">
+                        <h3>AI Message Generation</h3>
+                        <p>Personalized outreach drafts with cloud model support and local Ollama fallback.</p>
+                    </article>
+                    <article class="stage">
+                        <h3>Email Sending</h3>
+                        <p>SMTP delivery with sent-log tracking and cooldown-protected automation runs.</p>
+                    </article>
+                </div>
+            </div>
+
+            <div class="right-stack">
+                <section class="panel">
+                    <div class="panel-header">
+                        <div class="panel-title">Live Automation Analytics</div>
+                        <span class="chip">7-Day Snapshot</span>
+                    </div>
+                    <div class="stats">
+                        <div class="stat">
+                            <div class="label">Leads Found</div>
+                            <div class="value">2,480</div>
+                        </div>
+                        <div class="stat">
+                            <div class="label">Contacts Extracted</div>
+                            <div class="value">1,132</div>
+                        </div>
+                        <div class="stat">
+                            <div class="label">Emails Sent</div>
+                            <div class="value">786</div>
+                        </div>
+                        <div class="stat">
+                            <div class="label">Delivery Health</div>
+                            <div class="value success">99.3%</div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="panel">
+                    <div class="panel-header">
+                        <div class="panel-title">Business Contact Cards</div>
+                        <span class="chip">Qualified</span>
+                    </div>
+                    <div class="contacts">
+                        <article class="contact-card">
+                            <div>
+                                <strong>Peak Dental Group</strong>
+                                <span>Dallas, TX | marketing@peakdental.com</span>
+                            </div>
+                            <span class="badge">Ready</span>
+                        </article>
+                        <article class="contact-card">
+                            <div>
+                                <strong>Greenline Logistics</strong>
+                                <span>Houston, TX | ops@greenline-logistics.com</span>
+                            </div>
+                            <span class="badge">Ready</span>
+                        </article>
+                        <article class="contact-card">
+                            <div>
+                                <strong>NorthGate Health</strong>
+                                <span>Chicago, IL | admin@northgatehealth.com</span>
+                            </div>
+                            <span class="badge">Sent</span>
+                        </article>
+                    </div>
+                </section>
+            </div>
+        </section>
+
+        <section class="readme-layout">
+            <article class="panel section">
+                <h2>Project Summary</h2>
+                <p>All-in-one Client Finder is built as a practical CLI toolkit for sales and outreach automation. It supports two tracks: a traditional business lead pipeline (LinkedIn and Google Maps to contact extraction to AI email generation and SMTP sending), and a freelance discovery path focused on Fiverr and Upwork opportunities with AI pitch generation.</p>
+                <p class="flow-note">The system also includes a local model fallback with Ollama, so generation can continue if cloud APIs are unavailable.</p>
+
+                <div class="node-strip" aria-hidden="true">
+                    <span class="node"></span><span class="node"></span><span class="node"></span><span class="node"></span>
+                    <span class="node"></span><span class="node"></span><span class="node"></span><span class="node"></span>
+                </div>
+            </article>
+
+            <aside class="stack">
+                <article class="panel section">
+                    <h2>Core Features</h2>
+                    <ul>
+                        <li>LinkedIn and Google Maps lead discovery</li>
+                        <li>Website contact extraction (emails and phones)</li>
+                        <li>AI personalized email drafting</li>
+                        <li>SMTP bulk sending with sent-email tracking</li>
+                        <li>Fiverr and Upwork client discovery</li>
+                        <li>AI sales pitch generation by niche</li>
+                        <li>Unattended pipeline runner with cooldown logic</li>
+                        <li>CSV outputs in a reusable data folder</li>
+                    </ul>
+                </article>
+
+                <article class="panel section">
+                    <h2>Quick Start</h2>
+                    <div class="code-box">python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+pip install -r requirements.txt
+Copy-Item .env.example .env
+python main.py</div>
+                </article>
+            </aside>
+        </section>
+
+        <section class="panel section mb-24">
+            <h2>Image Prompt Used</h2>
+            <p>This project visual direction follows your exact prompt specification for a cinematic, high-contrast SaaS automation dashboard visual.</p>
+            <div class="code-box">Prompt:
+A modern SaaS-style dashboard interface visualizing AI-powered lead generation and outreach automation, showing multiple panels including business contact cards, email pipelines, analytics charts, and flowing arrows connecting stages (lead discovery -> data extraction -> AI message generation -> email sending). Clean UI with blue and cyan highlights over dark slate background, glowing data lines, minimalistic icons, and structured layout. Include subtle AI visual cues like neural patterns or abstract intelligence nodes. High contrast lighting, sharp edges, depth of field, professional tech branding aesthetic, empty space reserved for title text, ultra-detailed, 4K, cinematic lighting.
+
+Negative Prompt:
+low resolution, cluttered UI, too many colors, purple dominance, messy layout, distorted text, watermark, logos, cartoonish style, blurry, noise, oversaturated, unrealistic perspective</div>
+        </section>
+    </main>
+    <a href="https://github.com/MuhammadShahzebMalik786/All-in-one-Client-Finder" 
+   target="_blank"
+   rel="noopener noreferrer"
+   class="github-link"
+>
+
+   <!-- GitHub SVG Logo -->
+   <svg height="48" width="48" viewBox="0 0 16 16" fill="white">
+      <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 
+      6.53 5.47 7.59.4.07.55-.17.55-.38 
+      0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94
+      -.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52
+      -.01-.53.63-.01 1.08.58 1.23.82.72 1.21 
+      1.87.87 2.33.66.07-.52.28-.87.51-1.07
+      -1.78-.2-3.64-.89-3.64-3.95 
+      0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 
+      0 0 .67-.21 2.2.82a7.5 7.5 0 012-.27c.68 
+      0 1.36.09 2 .27 1.53-1.04 2.2-.82 
+      2.2-.82.44 1.1.16 1.92.08 
+      2.12.51.56.82 1.27.82 2.15 
+      0 3.07-1.87 3.75-3.65 
+      3.95.29.25.54.73.54 1.48 
+      0 1.07-.01 1.93-.01 2.2 
+      0 .21.15.46.55.38A8.01 8.01 0 0016 
+      8c0-4.42-3.58-8-8-8z"/>
+   </svg>
+
+   <!-- Text -->
+   <span>Download All-in-one-Client-Finder</span>
+
+</a>
+<script src="./universe-background.js"></script>
+</body>
+</html>
+
+

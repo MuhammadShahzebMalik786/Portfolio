@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -46,10 +46,10 @@
     </style>
 </head>
 <body>
-    <a href="../index.html" class="back-link">← Back to Portfolio</a>
+    <a href="../index.html" class="back-link">â† Back to Portfolio</a>
     
     <header class="header">
-        <h1>🎯 ML Recommendation System</h1>
+        <h1>ðŸŽ¯ ML Recommendation System</h1>
         <p>Personalized recommendations using collaborative filtering and content-based algorithms</p>
     </header>
 
@@ -71,12 +71,12 @@
         
         <div class="grid">
             <div class="panel">
-                <h3>👤 User Preferences</h3>
+                <h3>ðŸ‘¤ User Preferences</h3>
                 <div class="user-preferences" id="preferences">
                     <!-- Preferences will be populated by JavaScript -->
                 </div>
                 
-                <button class="btn btn-primary" onclick="generateRecommendations()">🔄 Get Recommendations</button>
+                <button class="btn btn-primary" onclick="generateRecommendations()">ðŸ”„ Get Recommendations</button>
                 
                 <div class="algorithm-info">
                     <h4 style="color: #1e40af; margin-bottom: 0.5rem;">Algorithm Used</h4>
@@ -85,7 +85,7 @@
             </div>
             
             <div class="panel">
-                <h3>✨ Personalized Recommendations</h3>
+                <h3>âœ¨ Personalized Recommendations</h3>
                 <div class="recommendations" id="recommendations">
                     <p style="color: #64748b; text-align: center; padding: 2rem; grid-column: 1 / -1;">Rate some items to get personalized recommendations</p>
                 </div>
@@ -93,20 +93,20 @@
         </div>
         
         <div class="panel">
-            <h3>🧠 How It Works</h3>
+            <h3>ðŸ§  How It Works</h3>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 1rem;">
                 <div style="text-align: center;">
-                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">📊</div>
+                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">ðŸ“Š</div>
                     <h4 style="color: #1e293b; margin-bottom: 0.5rem;">Data Collection</h4>
                     <p style="color: #64748b; font-size: 0.9rem;">Gather user ratings, preferences, and behavioral data</p>
                 </div>
                 <div style="text-align: center;">
-                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">🤖</div>
+                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">ðŸ¤–</div>
                     <h4 style="color: #1e293b; margin-bottom: 0.5rem;">ML Processing</h4>
                     <p style="color: #64748b; font-size: 0.9rem;">Apply collaborative filtering and content analysis</p>
                 </div>
                 <div style="text-align: center;">
-                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">🎯</div>
+                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">ðŸŽ¯</div>
                     <h4 style="color: #1e293b; margin-bottom: 0.5rem;">Personalization</h4>
                     <p style="color: #64748b; font-size: 0.9rem;">Generate tailored recommendations with confidence scores</p>
                 </div>
@@ -116,56 +116,56 @@
 
     <script>
         const items = [
-            { id: 1, name: 'Action Movies', icon: '🎬', category: 'entertainment' },
-            { id: 2, name: 'Sci-Fi Books', icon: '📚', category: 'books' },
-            { id: 3, name: 'Rock Music', icon: '🎸', category: 'music' },
-            { id: 4, name: 'Italian Food', icon: '🍝', category: 'food' },
-            { id: 5, name: 'Tech Gadgets', icon: '📱', category: 'technology' },
-            { id: 6, name: 'Travel', icon: '✈️', category: 'lifestyle' },
-            { id: 7, name: 'Photography', icon: '📸', category: 'hobbies' },
-            { id: 8, name: 'Fitness', icon: '💪', category: 'health' }
+            { id: 1, name: 'Action Movies', icon: 'ðŸŽ¬', category: 'entertainment' },
+            { id: 2, name: 'Sci-Fi Books', icon: 'ðŸ“š', category: 'books' },
+            { id: 3, name: 'Rock Music', icon: 'ðŸŽ¸', category: 'music' },
+            { id: 4, name: 'Italian Food', icon: 'ðŸ', category: 'food' },
+            { id: 5, name: 'Tech Gadgets', icon: 'ðŸ“±', category: 'technology' },
+            { id: 6, name: 'Travel', icon: 'âœˆï¸', category: 'lifestyle' },
+            { id: 7, name: 'Photography', icon: 'ðŸ“¸', category: 'hobbies' },
+            { id: 8, name: 'Fitness', icon: 'ðŸ’ª', category: 'health' }
         ];
         
         const recommendations = {
             entertainment: [
-                { name: 'Marvel Movies', icon: '🦸', score: 0.95 },
-                { name: 'Netflix Series', icon: '📺', score: 0.88 },
-                { name: 'Gaming', icon: '🎮', score: 0.82 }
+                { name: 'Marvel Movies', icon: 'ðŸ¦¸', score: 0.95 },
+                { name: 'Netflix Series', icon: 'ðŸ“º', score: 0.88 },
+                { name: 'Gaming', icon: 'ðŸŽ®', score: 0.82 }
             ],
             books: [
-                { name: 'Fantasy Novels', icon: '🧙', score: 0.91 },
-                { name: 'Tech Magazines', icon: '📖', score: 0.85 },
-                { name: 'Audiobooks', icon: '🎧', score: 0.79 }
+                { name: 'Fantasy Novels', icon: 'ðŸ§™', score: 0.91 },
+                { name: 'Tech Magazines', icon: 'ðŸ“–', score: 0.85 },
+                { name: 'Audiobooks', icon: 'ðŸŽ§', score: 0.79 }
             ],
             music: [
-                { name: 'Alternative Rock', icon: '🎵', score: 0.93 },
-                { name: 'Live Concerts', icon: '🎤', score: 0.87 },
-                { name: 'Music Streaming', icon: '🎶', score: 0.84 }
+                { name: 'Alternative Rock', icon: 'ðŸŽµ', score: 0.93 },
+                { name: 'Live Concerts', icon: 'ðŸŽ¤', score: 0.87 },
+                { name: 'Music Streaming', icon: 'ðŸŽ¶', score: 0.84 }
             ],
             food: [
-                { name: 'Mediterranean', icon: '🥗', score: 0.89 },
-                { name: 'Cooking Classes', icon: '👨‍🍳', score: 0.83 },
-                { name: 'Food Delivery', icon: '🚚', score: 0.78 }
+                { name: 'Mediterranean', icon: 'ðŸ¥—', score: 0.89 },
+                { name: 'Cooking Classes', icon: 'ðŸ‘¨â€ðŸ³', score: 0.83 },
+                { name: 'Food Delivery', icon: 'ðŸšš', score: 0.78 }
             ],
             technology: [
-                { name: 'Smart Home', icon: '🏠', score: 0.92 },
-                { name: 'AI Tools', icon: '🤖', score: 0.88 },
-                { name: 'VR Headsets', icon: '🥽', score: 0.81 }
+                { name: 'Smart Home', icon: 'ðŸ ', score: 0.92 },
+                { name: 'AI Tools', icon: 'ðŸ¤–', score: 0.88 },
+                { name: 'VR Headsets', icon: 'ðŸ¥½', score: 0.81 }
             ],
             lifestyle: [
-                { name: 'Adventure Tours', icon: '🏔️', score: 0.90 },
-                { name: 'City Breaks', icon: '🏙️', score: 0.86 },
-                { name: 'Travel Apps', icon: '🗺️', score: 0.80 }
+                { name: 'Adventure Tours', icon: 'ðŸ”ï¸', score: 0.90 },
+                { name: 'City Breaks', icon: 'ðŸ™ï¸', score: 0.86 },
+                { name: 'Travel Apps', icon: 'ðŸ—ºï¸', score: 0.80 }
             ],
             hobbies: [
-                { name: 'Camera Gear', icon: '📷', score: 0.94 },
-                { name: 'Photo Editing', icon: '🖼️', score: 0.87 },
-                { name: 'Online Courses', icon: '💻', score: 0.83 }
+                { name: 'Camera Gear', icon: 'ðŸ“·', score: 0.94 },
+                { name: 'Photo Editing', icon: 'ðŸ–¼ï¸', score: 0.87 },
+                { name: 'Online Courses', icon: 'ðŸ’»', score: 0.83 }
             ],
             health: [
-                { name: 'Yoga Classes', icon: '🧘', score: 0.91 },
-                { name: 'Nutrition Apps', icon: '🥑', score: 0.85 },
-                { name: 'Workout Gear', icon: '🏋️', score: 0.82 }
+                { name: 'Yoga Classes', icon: 'ðŸ§˜', score: 0.91 },
+                { name: 'Nutrition Apps', icon: 'ðŸ¥‘', score: 0.85 },
+                { name: 'Workout Gear', icon: 'ðŸ‹ï¸', score: 0.82 }
             ]
         };
         
@@ -180,7 +180,7 @@
                         <span>${item.name}</span>
                     </div>
                     <div class="rating-stars" data-item="${item.id}">
-                        ${[1,2,3,4,5].map(star => `<span class="star" data-rating="${star}">⭐</span>`).join('')}
+                        ${[1,2,3,4,5].map(star => `<span class="star" data-rating="${star}">â­</span>`).join('')}
                     </div>
                 </div>
             `).join('');
@@ -278,5 +278,8 @@
         // Initialize the demo
         initializePreferences();
     </script>
+<script src="./universe-background.js"></script>
 </body>
 </html>
+
+
