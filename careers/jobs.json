@@ -9,7 +9,7 @@
             "type": "Internship",
             "workMode": "Remote",
             "location": "Remote - Worldwide",
-            "status": "Open",
+            "status": "Closed",
             "experience": "Entry Level",
             "postedDate": "2026-03-20",
             "compensation": "Paid internship",
@@ -33,7 +33,7 @@
             "type": "Full-time",
             "workMode": "Remote",
             "location": "Remote - Pakistan",
-            "status": "Open",
+            "status": "Closed",
             "experience": "2+ years",
             "postedDate": "2026-03-18",
             "compensation": "Market competitive",
@@ -57,7 +57,7 @@
             "type": "Part-time",
             "workMode": "Hybrid",
             "location": "Lahore, Pakistan",
-            "status": "Open",
+            "status": "Closed",
             "experience": "1+ years",
             "postedDate": "2026-03-12",
             "compensation": "Base + performance bonus",
@@ -105,7 +105,7 @@
             "type": "Internship",
             "workMode": "Remote",
             "location": "Remote - Asia time zones",
-            "status": "Open",
+            "status": "Closed",
             "experience": "Entry Level",
             "postedDate": "2026-03-25",
             "compensation": "Paid internship",
@@ -145,6 +145,30 @@
                 "Experience with API authentication and data mapping"
             ],
             "applyEmail": "malikshahzebabd@gmail.com"
+        },
+        {
+            "id": "VSG-REL-COM-007",
+            "title": "Project Hunter (Intern – Commission Based)",
+            "department": "Customer Relation",
+            "type": "Full-time",
+            "workMode": "Remote",
+            "location": "Bahawalpur Pakistan , Remote",
+            "status": "Open",
+            "experience": "Preffered not must",
+            "postedDate": "31st March 2026",
+            "compensation": "20% project based commision",
+            "description": "We’re looking for a Project Hunter to bring in clients and manage communication between clients and our team.\n\n💰 Compensation: 20% per successfully delivered project (No fixed salary)\nIf you can bring clients, we want you.\n\nregards Muhammad Shahzeb Malik from VSG team dev",
+            "responsibilities": [
+                "• Finding and secure projects (LinkedIn, Upwork, etc.)",
+                "• Communicate with clients & follow up",
+                "• Keep coordination smooth with our team"
+            ],
+            "requirements": [
+                "• Proven client hunting / lead generation",
+                "• Strong communication skills",
+                "• Bonus: existing network"
+            ],
+            "applyEmail": "Malikshahzebabd@gmail.com"
         }
     ]
 }
