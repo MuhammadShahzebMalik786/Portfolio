@@ -37,8 +37,8 @@ body {
     top: 0;
     width: 100%;
     background: linear-gradient(135deg, var(--tuscan-sun) 0%, var(--graphite) 100%);
-    backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
+    backdrop-filter: blur(15px);
     z-index: 1000;
     padding: 1rem 0;
     box-shadow: 0 2px 20px rgba(var(--carbon-black-rgb), 0.08);
@@ -112,11 +112,9 @@ body {
 .nav-menu {
     display: flex;
     list-style: none;
-    gap: 2rem;
+    gap: 1.5rem;
     background: rgba(var(--carbon-black-rgb), 0.2);
-    border-radius: 999px;
     padding: 0.5rem 1.2rem;
-    box-shadow: 0 2px 12px rgba(var(--carbon-black-rgb), 0.12);
 }
 
 .nav-menu a {
@@ -124,18 +122,10 @@ body {
     color: var(--soft-linen);
     font-weight: 500;
     transition: color 0.3s;
-        font-weight: 600;
-        font-size: 1.1rem;
-        letter-spacing: 1px;
-        padding: 0.5rem 1rem;
-        border-radius: 6px;
-        transition: background 0.3s, color 0.3s;
 }
 
 .nav-menu a:hover {
-    color: var(--soft-linen);
-        background: rgba(var(--soft-linen-rgb), 0.25);
-        box-shadow: 0 2px 8px rgba(var(--carbon-black-rgb), 0.12);
+    color: var(--tuscan-sun);
 }
 
 /* Hero Section */

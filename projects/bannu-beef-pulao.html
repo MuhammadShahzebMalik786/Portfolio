@@ -22,7 +22,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Segoe UI', sans-serif; line-height: 1.6; color: #2d1810; }
         
-        .navbar { position: fixed; top: 0; width: 100%; background: rgba(139, 69, 19, 0.95); backdrop-filter: blur(10px); z-index: 1000; padding: 1rem 0; }
+        .navbar { position: fixed; top: 0; width: 100%; background: rgba(139, 69, 19, 0.95); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); z-index: 1000; padding: 1rem 0; }
         .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; }
         .logo { font-size: 1.8rem; font-weight: bold; color: #ffd700; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
         .nav-menu { display: flex; list-style: none; gap: 2rem; }
@@ -69,7 +69,12 @@
         .add-to-order:hover { background: #654321; }
         
         .order-section { background: linear-gradient(135deg, #8b4513, #654321); color: white; }
-        .order-form { background: rgba(255, 255, 255, 0.1); padding: 3rem; border-radius: 20px; backdrop-filter: blur(10px); max-width: 600px; margin: 0 auto; }
+        .order-form { background: rgba(255, 255, 255, 0.1); padding: 3rem; border-radius: 20px; -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); max-width: 600px; margin: 0 auto; }
+        .order-section-title { color: white; }
+        .order-section-subtitle { color: rgba(255, 255, 255, 0.9); }
+        .cart-title { color: #ffd700; margin-bottom: 1rem; }
+        .cart-empty { text-align: center; opacity: 0.7; }
+        .order-submit { width: 100%; font-size: 1.2rem; padding: 1rem; }
         .form-group { margin-bottom: 1.5rem; }
         .form-group label { display: block; margin-bottom: 0.5rem; font-weight: 500; }
         .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 1rem; border: none; border-radius: 8px; background: rgba(255, 255, 255, 0.9); color: #2d1810; font-size: 1rem; }
@@ -92,6 +97,12 @@
         .footer-section a:hover { color: #ffd700; }
         .footer-bottom { text-align: center; padding-top: 2rem; border-top: 1px solid #654321; color: #8b7355; }
         
+        .contact-section { background: #8b4513; color: white; }
+        .contact-section-title { color: white; }
+        .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3rem; text-align: center; }
+        .contact-heading { color: #ffd700; margin-bottom: 1rem; }
+        .contact-phone { font-size: 1.5rem; font-weight: bold; }
+
         .back-link { position: fixed; top: 80px; right: 20px; background: rgba(139, 69, 19, 0.9); color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; z-index: 1000; }
         
         .admin-note { background: #fff3cd; border: 1px solid #ffeaa7; color: #856404; padding: 1rem; border-radius: 8px; margin-bottom: 2rem; text-align: center; }
@@ -181,14 +192,14 @@
 
     <section id="order" class="section order-section">
         <div class="container">
-            <h2 class="section-title" style="color: white;">Place Your Order</h2>
-            <p class="section-subtitle" style="color: rgba(255,255,255,0.9);">Select your favorite dishes and we'll deliver them hot and fresh to your doorstep</p>
+            <h2 class="section-title order-section-title">Place Your Order</h2>
+            <p class="section-subtitle order-section-subtitle">Select your favorite dishes and we'll deliver them hot and fresh to your doorstep</p>
             
             <div class="order-form">
                 <div class="cart" id="cart">
-                    <h3 style="color: #ffd700; margin-bottom: 1rem;">ðŸ›’ Your Order</h3>
+                    <h3 class="cart-title">ðŸ›’ Your Order</h3>
                     <div id="cartItems">
-                        <p style="text-align: center; opacity: 0.7;">No items selected yet. Browse our menu above!</p>
+                        <p class="cart-empty">No items selected yet. Browse our menu above!</p>
                     </div>
                     <div class="cart-total" id="cartTotal">Total: Rs. 0</div>
                 </div>
@@ -210,8 +221,8 @@
                     </div>
                     
                     <div class="form-group">
-                        <label>â° Preferred Delivery Time</label>
-                        <select name="deliveryTime">
+                        <label for="deliveryTime">â° Preferred Delivery Time</label>
+                        <select id="deliveryTime" name="deliveryTime">
                             <option value="asap">As Soon As Possible (30-45 mins)</option>
                             <option value="1hour">In 1 Hour</option>
                             <option value="2hours">In 2 Hours</option>
@@ -224,7 +235,7 @@
                         <textarea name="instructions" rows="2" placeholder="Any special requests or cooking preferences"></textarea>
                     </div>
                     
-                    <button type="submit" class="btn btn-primary" style="width: 100%; font-size: 1.2rem; padding: 1rem;">
+                    <button type="submit" class="btn btn-primary order-submit">
                         ðŸ›µ Confirm Order & Get Delivery
                     </button>
                 </form>
@@ -253,25 +264,25 @@
         </div>
     </section>
 
-    <section id="contact" class="section" style="background: #8b4513; color: white;">
+    <section id="contact" class="section contact-section">
         <div class="container">
-            <h2 class="section-title" style="color: white;">Contact & Delivery Info</h2>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3rem; text-align: center;">
+            <h2 class="section-title contact-section-title">Contact & Delivery Info</h2>
+            <div class="contact-grid">
                 <div>
-                    <h3 style="color: #ffd700; margin-bottom: 1rem;">ðŸ“ž Order Hotline</h3>
-                    <p style="font-size: 1.5rem; font-weight: bold;">+92 300 PULAO-1</p>
+                    <h3 class="contact-heading">ðŸ“ž Order Hotline</h3>
+                    <p class="contact-phone">+92 300 PULAO-1</p>
                     <p>Available 11 AM - 11 PM Daily</p>
                 </div>
                 
                 <div>
-                    <h3 style="color: #ffd700; margin-bottom: 1rem;">ðŸšš Delivery Areas</h3>
+                    <h3 class="contact-heading">ðŸšš Delivery Areas</h3>
                     <p>We deliver across the city</p>
                     <p>Delivery Fee: Rs. 100</p>
                     <p>Free delivery on orders above Rs. 2000</p>
                 </div>
                 
                 <div>
-                    <h3 style="color: #ffd700; margin-bottom: 1rem;">â±ï¸ Delivery Time</h3>
+                    <h3 class="contact-heading">â±ï¸ Delivery Time</h3>
                     <p>Standard: 30-45 minutes</p>
                     <p>Peak hours: 45-60 minutes</p>
                     <p>We guarantee hot, fresh delivery!</p>

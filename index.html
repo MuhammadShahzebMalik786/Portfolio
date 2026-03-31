@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#2563eb">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
@@ -71,7 +70,6 @@
     <link rel="apple-touch-icon" href="logo/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="192x192" href="logo/apple-touch-icon.png">
     <link rel="manifest" href="manifest.json">
-    <link rel="apple-touch-icon" href="logo/apple-touch-icon.png">
     
         <!-- JSON-LD Organization Schema -->
         <script type="application/ld+json">
@@ -105,13 +103,13 @@
 </head>
 <body>
     <!-- Skip Navigation for Accessibility -->
-    <a href="#main-content" class="skip-nav" style="position:absolute;top:-40px;left:0;background:#2563eb;color:white;padding:8px;text-decoration:none;z-index:1000;" onfocus="this.style.top='0'" onblur="this.style.top='-40px'">Skip to main content</a>
+    <a href="#main-content" class="skip-nav">Skip to main content</a>
     
     <!-- Navigation -->
-    <nav class="navbar" style="background: linear-gradient(135deg, #f5cb5c 0%, #333533 100%);">
+    <nav class="navbar homepage-navbar">
         <div class="nav-container">
             <div class="logo-text">
-                <span class="logo-text" style="font-family: 'Brush Script MT', cursive, serif; font-size: 1.8rem; font-weight: 600; color: #e8eddf; letter-spacing: 0.5px; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">Virtual Support Group<span style="color: #f5cb5c; font-weight: bold;">.studio</span></span>
+                <span class="homepage-brand">Virtual Support Group<span class="homepage-brand-accent">.studio</span></span>
             </div>
             <div class="hamburger" id="hamburger">
                 <span></span>
@@ -122,6 +120,7 @@
                 <li><a href="#home" class="nav-link">Home</a></li>
                 <li><a href="about\team.html" class="nav-link">Team</a></li>
                 <li><a href="climate-awairness/" class="nav-link">Climate</a></li>
+                <li><a href="careers/career.html" class="nav-link">Careers</a></li>
                 <li><a href="#about" class="nav-link">About</a></li>
                 <li><a href="#services" class="nav-link">Services</a></li>
                 <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
@@ -137,7 +136,7 @@
         <main id="main-content">
         <div class="hero-content">
             <h1>Virtual Support Group | Flutter, AI/ML, Web Development & Virtual Assistant Services</h1>
-            <p class="tagline">Virtual Support Group - Your trusted partner for professional website development, <a href="#services" style="color: #ffd700;">Flutter development</a>, <a href="#services" style="color: #ffd700;">AI/ML solutions</a>, and comprehensive virtual assistant services. Need a website? Virtual Support Group creates cutting-edge websites and digital solutions for businesses worldwide.</p>
+            <p class="tagline">Virtual Support Group - Your trusted partner for professional website development, <a href="#services" class="tagline-link">Flutter development</a>, <a href="#services" class="tagline-link">AI/ML solutions</a>, and comprehensive virtual assistant services. Need a website? Virtual Support Group creates cutting-edge websites and digital solutions for businesses worldwide.</p>
             <div class="hero-buttons">
                 <a href="#contact" class="btn-primary" onclick="trackButtonClick('Start Project')">Start Your Project Today</a>
                 <a href="#services" class="btn-secondary" onclick="trackButtonClick('Explore Services')">Explore Our Services</a>
@@ -420,7 +419,7 @@
                         <span>Mobile Game</span>
                         <span>Cross-Platform</span>
                     </div>
-                    <a href="https://drive.google.com/file/d/1EjmXXEaq-ZLHTpHj_wEaPDeowxl0ko_3/view?usp=sharing" class="project-link" target="_blank">Download APK →</a>
+                    <a href="https://drive.google.com/file/d/1EjmXXEaq-ZLHTpHj_wEaPDeowxl0ko_3/view?usp=sharing" class="project-link" target="_blank" rel="noopener noreferrer">Download APK →</a>
                 </div>
 
                 <div class="project-card">
@@ -664,7 +663,7 @@
                         <strong>Email:</strong> <a href="mailto:Malikshahzebabd@gmail.com">Malikshahzebabd@gmail.com</a>
                     </div>
                     <div class="contact-item">
-                        <strong>WhatsApp:</strong> <a href="https://wa.me/923448970498" target="_blank">+92 344 897 0498</a>
+                        <strong>WhatsApp:</strong> <a href="https://wa.me/923448970498" target="_blank" rel="noopener noreferrer">+92 344 897 0498</a>
                     </div>
                     <div class="contact-item">
                         <strong>Response Time:</strong> Within 12 hours
@@ -682,8 +681,8 @@
                         <input type="text" name="name" placeholder="Your Name" required>
                         <input type="email" name="email" placeholder="Your Email" required>
                         <!-- Honeypot field for spam protection -->
-                        <input type="text" name="_gotcha" style="display:none !important">
-                        <select name="service" required>
+                        <input type="text" name="_gotcha" class="honeypot" aria-label="Leave this field blank" aria-hidden="true" tabindex="-1" autocomplete="off">
+                        <select name="service" required aria-label="Select service">
                             <option value="">Select Service</option>
                             <option value="ai-ml">AI & Machine Learning</option>
                             <option value="data-science">Data Science & Analytics</option>
@@ -754,6 +753,7 @@
             event_label: e.message
         });
     });
+    </script>
     <script>
     // Simple Chat Widget
     setTimeout(function() {

@@ -9,10 +9,10 @@
   <link rel="stylesheet" href="/climate-awairness/styles.css" />
 </head>
 <body>
-  <nav class="navbar">
+  <nav class="navbar climate-navbar">
     <div class="nav-container">
       <div class="logo-text">
-        <span class="logo-text" style="font-family: 'Brush Script MT', cursive, serif; font-size: 1.8rem; font-weight: 600; color: #e8eddf; letter-spacing: 0.5px; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">Virtual Support Group<span style="color: #f5cb5c; font-weight: bold;">.studio</span></span>
+        <span class="climate-logo">Virtual Support Group<span class="climate-logo-accent">.studio</span></span>
       </div>
       <div class="hamburger" id="hamburger">
         <span></span>
@@ -20,11 +20,15 @@
         <span></span>
       </div>
       <ul class="nav-menu" id="nav-menu">
-        <li><a href="/" class="nav-link">Home</a></li>
+        <li><a href="/index.html#home" class="nav-link">Home</a></li>
         <li><a href="/about/team.html" class="nav-link">Team</a></li>
         <li><a href="/climate-awairness/" class="nav-link">Climate</a></li>
+        <li><a href="/careers/career.html" class="nav-link">Careers</a></li>
+        <li><a href="/index.html#about" class="nav-link">About</a></li>
         <li><a href="/index.html#services" class="nav-link">Services</a></li>
         <li><a href="/index.html#portfolio" class="nav-link">Portfolio</a></li>
+        <li><a href="/index.html#testimonials" class="nav-link">Testimonials</a></li>
+        <li><a href="/index.html#faq" class="nav-link">FAQ</a></li>
         <li><a href="/index.html#contact" class="nav-link">Contact</a></li>
       </ul>
     </div>
@@ -385,26 +389,26 @@
           <div class="chart-card">
             <h3>Annual Mean Temperature (deg C)</h3>
             <div class="bar-chart">
-              <div class="bar" style="--value: 21.62"><span>2020</span><em>21.62</em></div>
-              <div class="bar" style="--value: 21.74"><span>2021</span><em>21.74</em></div>
-              <div class="bar" style="--value: 21.87"><span>2022</span><em>21.87</em></div>
-              <div class="bar" style="--value: 21.90"><span>2023</span><em>21.90</em></div>
-              <div class="bar" style="--value: 22.14"><span>2024</span><em>22.14</em></div>
-              <div class="bar" style="--value: 22.2"><span>2025*</span><em>22.2</em></div>
-              <div class="bar" style="--value: 22.3"><span>2026*</span><em>22.3</em></div>
+              <div class="bar" data-value="21.62"><span>2020</span><em>21.62</em></div>
+              <div class="bar" data-value="21.74"><span>2021</span><em>21.74</em></div>
+              <div class="bar" data-value="21.87"><span>2022</span><em>21.87</em></div>
+              <div class="bar" data-value="21.90"><span>2023</span><em>21.90</em></div>
+              <div class="bar" data-value="22.14"><span>2024</span><em>22.14</em></div>
+              <div class="bar" data-value="22.2"><span>2025*</span><em>22.2</em></div>
+              <div class="bar" data-value="22.3"><span>2026*</span><em>22.3</em></div>
             </div>
             <p class="table-note">*Projected values.</p>
           </div>
           <div class="chart-card">
             <h3>PM2.5 (ug/m3)</h3>
             <div class="bar-chart pm">
-              <div class="bar" style="--value: 59"><span>2020</span><em>59.0</em></div>
-              <div class="bar" style="--value: 66.8"><span>2021</span><em>66.8</em></div>
-              <div class="bar" style="--value: 63"><span>2022</span><em>63.0</em></div>
-              <div class="bar" style="--value: 73.7"><span>2023</span><em>73.7</em></div>
-              <div class="bar" style="--value: 72"><span>2024*</span><em>70-75</em></div>
-              <div class="bar" style="--value: 70"><span>2025*</span><em>70</em></div>
-              <div class="bar" style="--value: 70"><span>2026*</span><em>68-72</em></div>
+              <div class="bar" data-value="59"><span>2020</span><em>59.0</em></div>
+              <div class="bar" data-value="66.8"><span>2021</span><em>66.8</em></div>
+              <div class="bar" data-value="63"><span>2022</span><em>63.0</em></div>
+              <div class="bar" data-value="73.7"><span>2023</span><em>73.7</em></div>
+              <div class="bar" data-value="72"><span>2024*</span><em>70-75</em></div>
+              <div class="bar" data-value="70"><span>2025*</span><em>70</em></div>
+              <div class="bar" data-value="70"><span>2026*</span><em>68-72</em></div>
             </div>
             <p class="table-note">*Estimated or projected values.</p>
           </div>
@@ -729,6 +733,10 @@
         navMenu.classList.toggle('active');
       });
     }
+
+    document.querySelectorAll('.bar[data-value]').forEach((bar) => {
+      bar.style.setProperty('--value', bar.dataset.value);
+    });
 
     const labels = ['2020', '2021', '2022', '2023', '2024', '2025*', '2026*'];
     const gridColor = 'rgba(36, 36, 35, 0.08)';

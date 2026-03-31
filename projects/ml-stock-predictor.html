@@ -37,6 +37,12 @@
         
         .prediction-result { background: #065f46; padding: 1.5rem; border-radius: 10px; margin-top: 1rem; border-left: 4px solid #10b981; }
         .prediction-price { font-size: 2rem; font-weight: bold; color: #10b981; }
+        .prediction-result-wrap { display: none; }
+        .chart-note { color: #64748b; font-size: 0.9rem; margin-top: 1rem; }
+        .model-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: 1rem; }
+        .model-stat { text-align: center; }
+        .model-stat-value { font-size: 1.2rem; font-weight: bold; color: #10b981; }
+        .model-stat-label { font-size: 0.8rem; color: #64748b; }
         
         .back-link { position: fixed; top: 20px; right: 20px; background: #2563eb; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; z-index: 1000; }
     </style>
@@ -69,7 +75,7 @@
             <div class="panel">
                 <h3>ðŸ“Š Stock Selection</h3>
                 <div class="form-group">
-                    <label>Select Stock</label>
+                    <label for="stockSelect">Select Stock</label>
                     <select id="stockSelect" onchange="updateChart()">
                         <option value="AAPL">Apple (AAPL)</option>
                         <option value="GOOGL">Google (GOOGL)</option>
@@ -80,7 +86,7 @@
                 </div>
                 
                 <div class="form-group">
-                    <label>Prediction Days</label>
+                    <label for="daysSelect">Prediction Days</label>
                     <select id="daysSelect">
                         <option value="7">7 Days</option>
                         <option value="30">30 Days</option>
@@ -89,13 +95,13 @@
                 </div>
                 
                 <div class="form-group">
-                    <label>Current Price</label>
+                    <label for="currentPrice">Current Price</label>
                     <input type="text" id="currentPrice" value="$150.25" readonly>
                 </div>
                 
                 <button class="btn btn-primary" onclick="predictPrice()">ðŸ”® Predict Price</button>
                 
-                <div id="predictionResult" style="display: none;">
+                <div id="predictionResult" class="prediction-result-wrap">
                     <div class="prediction-result">
                         <h4>Prediction Result</h4>
                         <div class="prediction-price" id="predictedPrice">$0.00</div>
@@ -109,7 +115,7 @@
                 <div class="chart-container" id="chartContainer">
                     <canvas id="priceChart" width="600" height="280"></canvas>
                 </div>
-                <p style="color: #64748b; font-size: 0.9rem; margin-top: 1rem;">
+                <p class="chart-note">
                     Green line: Historical prices | Orange line: ML predictions
                 </p>
             </div>
@@ -119,22 +125,22 @@
             <h3>ðŸ§  Model Details</h3>
             <p>This LSTM (Long Short-Term Memory) neural network analyzes historical price patterns, trading volume, and market indicators to predict future stock prices. The model uses 60-day sequences and multiple technical indicators.</p>
             
-            <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: 1rem;">
-                <div style="text-align: center;">
-                    <div style="font-size: 1.2rem; font-weight: bold; color: #10b981;">4 Layers</div>
-                    <div style="font-size: 0.8rem; color: #64748b;">LSTM Layers</div>
+            <div class="model-grid">
+                <div class="model-stat">
+                    <div class="model-stat-value">4 Layers</div>
+                    <div class="model-stat-label">LSTM Layers</div>
                 </div>
-                <div style="text-align: center;">
-                    <div style="font-size: 1.2rem; font-weight: bold; color: #10b981;">128 Units</div>
-                    <div style="font-size: 0.8rem; color: #64748b;">Hidden Units</div>
+                <div class="model-stat">
+                    <div class="model-stat-value">128 Units</div>
+                    <div class="model-stat-label">Hidden Units</div>
                 </div>
-                <div style="text-align: center;">
-                    <div style="font-size: 1.2rem; font-weight: bold; color: #10b981;">60 Days</div>
-                    <div style="font-size: 0.8rem; color: #64748b;">Sequence Length</div>
+                <div class="model-stat">
+                    <div class="model-stat-value">60 Days</div>
+                    <div class="model-stat-label">Sequence Length</div>
                 </div>
-                <div style="text-align: center;">
-                    <div style="font-size: 1.2rem; font-weight: bold; color: #10b981;">0.001</div>
-                    <div style="font-size: 0.8rem; color: #64748b;">Learning Rate</div>
+                <div class="model-stat">
+                    <div class="model-stat-value">0.001</div>
+                    <div class="model-stat-label">Learning Rate</div>
                 </div>
             </div>
         </div>

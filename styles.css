@@ -37,13 +37,32 @@ body {
     top: 0;
     width: 100%;
     background: rgba(var(--soft-linen-rgb), 0.98);
-    backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
+    backdrop-filter: blur(15px);
     z-index: 1000;
     padding: 1rem 0;
     box-shadow: 0 2px 20px rgba(var(--carbon-black-rgb), 0.08);
     border-bottom: 1px solid rgba(var(--soft-linen-rgb), 0.2);
     transition: all 0.3s ease;
+}
+
+.homepage-navbar {
+    background: linear-gradient(135deg, #f5cb5c 0%, #333533 100%);
+}
+
+.skip-nav {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: #2563eb;
+    color: #ffffff;
+    padding: 8px;
+    text-decoration: none;
+    z-index: 1000;
+}
+
+.skip-nav:focus {
+    top: 0;
 }
 
 .navbar.scrolled {
@@ -60,8 +79,32 @@ body {
     margin: 0 auto;
     padding: 0 20px;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
+    gap: 1.25rem;
+}
+
+.logo-text {
+    margin-right: auto;
+}
+
+.homepage-brand {
+    font-family: 'Brush Script MT', cursive, serif;
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #e8eddf;
+    letter-spacing: 0.5px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    line-height: 1;
+}
+
+.homepage-brand-accent {
+    color: #f5cb5c;
+    font-weight: bold;
+    white-space: nowrap;
 }
 
 .logo {
@@ -164,6 +207,15 @@ body {
     font-size: 1.2rem;
     margin-bottom: 2rem;
     opacity: 0.9;
+}
+
+.tagline a,
+.tagline-link {
+    color: #ffd700;
+}
+
+.honeypot {
+    display: none !important;
 }
 
 .hero-buttons {

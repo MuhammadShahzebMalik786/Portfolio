@@ -39,6 +39,7 @@
         .results-table th, .results-table td { padding: 0.8rem; text-align: left; border-bottom: 1px solid #334155; }
         .results-table th { background: #334155; color: #cbd5e1; }
         .results-table td { background: #1e293b; }
+        .results-empty { color: #64748b; text-align: center; padding: 2rem; }
         
         .automation-list { max-height: 300px; overflow-y: auto; }
         .automation-item { background: #334155; padding: 1rem; border-radius: 8px; margin-bottom: 0.5rem; display: flex; justify-content: space-between; align-items: center; }
@@ -94,7 +95,7 @@
                 <h3>ðŸ”§ Query Builder</h3>
                 <div class="query-builder">
                     <div class="form-group">
-                        <label>Database Table</label>
+                        <label for="table-select">Database Table</label>
                         <select id="table-select" onchange="updateQuery()">
                             <option value="users">users</option>
                             <option value="orders">orders</option>
@@ -104,7 +105,7 @@
                     </div>
                     
                     <div class="form-group">
-                        <label>Query Type</label>
+                        <label for="query-type">Query Type</label>
                         <select id="query-type" onchange="updateQuery()">
                             <option value="SELECT">SELECT</option>
                             <option value="INSERT">INSERT</option>
@@ -130,7 +131,7 @@
             <div class="panel">
                 <h3>ðŸ“Š Query Results</h3>
                 <div id="results-container">
-                    <p style="color: #64748b; text-align: center; padding: 2rem;">Execute a query to see results</p>
+                    <p class="results-empty">Execute a query to see results</p>
                 </div>
             </div>
         </div>

@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Careers | Virtual Support Group</title>
+    <meta name="description" content="Explore open and closed jobs, internships, remote positions, and full-time opportunities at Virtual Support Group. Listings are managed from our official JSON careers file.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://virtualsupportgroup.studio/careers/career.html">
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../enhanced-styles.css">
+    <style>
+        .skip-nav {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: #2563eb;
+            color: #ffffff;
+            padding: 8px;
+            text-decoration: none;
+            z-index: 1000;
+        }
+
+        .skip-nav:focus {
+            top: 0;
+        }
+
+        .career-navbar {
+            background: linear-gradient(135deg, #f5cb5c 0%, #333533 100%);
+        }
+
+        .career-navbar.scrolled {
+            background: linear-gradient(135deg, rgba(245, 203, 92, 0.98) 0%, rgba(51, 53, 51, 0.98) 100%);
+            box-shadow: 0 6px 28px rgba(var(--carbon-black-rgb), 0.2);
+            border-bottom: 1px solid rgba(var(--soft-linen-rgb), 0.25);
+        }
+
+        .career-navbar .nav-container {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .career-navbar .logo-text {
+            margin-right: auto;
+        }
+
+        .career-navbar .nav-menu {
+            margin-left: auto;
+            gap: 1.5rem;
+            background: rgba(36, 36, 35, 0.2);
+            padding: 0.5rem 1.2rem;
+            border-radius: 999px;
+        }
+
+        .career-logo {
+            font-family: 'Brush Script MT', cursive, serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #e8eddf;
+            letter-spacing: 0.5px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            line-height: 1;
+        }
+
+        .career-logo-accent {
+            color: #f5cb5c;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        .careers-filter-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
+        }
+
+        .filter-field {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .filter-field label {
+            font-weight: 600;
+            color: var(--soft-linen);
+        }
+
+        .filter-field input,
+        .filter-field select {
+            padding: 10px 12px;
+            border-radius: 6px;
+            border: 1px solid rgba(var(--soft-linen-rgb), 0.25);
+            font-size: 1rem;
+            background: rgba(var(--graphite-rgb), 0.95);
+            color: var(--soft-linen);
+        }
+
+        .filter-field input::placeholder {
+            color: rgba(var(--soft-linen-rgb), 0.62);
+        }
+
+        .filter-field input:focus,
+        .filter-field select:focus {
+            outline: none;
+            border-color: rgba(var(--tuscan-sun-rgb), 0.7);
+            box-shadow: 0 0 0 3px rgba(var(--tuscan-sun-rgb), 0.2);
+        }
+
+        .careers-filter-actions {
+            margin-top: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .jobs-meta {
+            margin: 0;
+            color: var(--soft-linen);
+            font-weight: 600;
+        }
+
+        .skills-showcase {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(160deg, rgba(var(--carbon-black-rgb), 0.96), rgba(var(--graphite-rgb), 0.95));
+            border: 1px solid rgba(var(--tuscan-sun-rgb), 0.3);
+            box-shadow: 0 14px 28px rgba(var(--carbon-black-rgb), 0.2);
+        }
+
+        .skills-showcase::before {
+            content: '';
+            position: absolute;
+            width: 240px;
+            height: 240px;
+            right: -100px;
+            top: -110px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(var(--tuscan-sun-rgb), 0.4), rgba(var(--tuscan-sun-rgb), 0));
+        }
+
+        .skills-showcase > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .job-metric-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--carbon-black);
+            margin-top: 0.4rem;
+        }
+
+        #career-metrics.about {
+            padding: 52px 0 28px;
+        }
+
+        #career-metrics .key-points {
+            gap: 1rem;
+            margin-top: 1.8rem;
+        }
+
+        #career-metrics .point {
+            padding: 1.35rem;
+        }
+
+        #filters.services {
+            padding: 26px 0 18px;
+        }
+
+        #job-listings.services {
+            padding: 22px 0 44px;
+        }
+
+        #filters h2,
+        #job-listings h2 {
+            margin-bottom: 1.5rem;
+        }
+
+        #jobsGrid {
+            gap: 0.95rem;
+        }
+
+        .career-job-card {
+            border-left: none;
+            position: relative;
+            overflow: hidden;
+            border-radius: 14px;
+            padding: 1.1rem;
+            background: linear-gradient(160deg, rgba(var(--carbon-black-rgb), 0.98), rgba(var(--graphite-rgb), 0.97));
+            border: 1px solid rgba(var(--soft-linen-rgb), 0.14);
+            box-shadow: 0 12px 30px rgba(var(--carbon-black-rgb), 0.25);
+            animation: cardReveal 0.45s ease both;
+            transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+        }
+
+        @keyframes cardReveal {
+            from {
+                opacity: 0;
+                transform: translateY(18px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .career-job-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--tuscan-sun) 0%, #f8d173 50%, var(--tuscan-sun) 100%);
+            transition: left 0.38s ease;
+        }
+
+        .career-job-card::after {
+            content: '';
+            position: absolute;
+            right: -35px;
+            bottom: -35px;
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(var(--tuscan-sun-rgb), 0.25), rgba(var(--tuscan-sun-rgb), 0));
+            pointer-events: none;
+            transition: transform 0.32s ease, opacity 0.32s ease;
+        }
+
+        .career-job-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(var(--tuscan-sun-rgb), 0.45);
+            box-shadow: 0 24px 42px rgba(var(--carbon-black-rgb), 0.35);
+        }
+
+        .career-job-card:hover::before {
+            left: 0;
+        }
+
+        .career-job-card:hover::after {
+            transform: scale(1.15);
+            opacity: 0.9;
+        }
+
+        .career-job-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 0.8rem;
+        }
+
+        .career-job-title-wrap {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .job-id {
+            margin: 0;
+            font-size: 0.78rem;
+            letter-spacing: 0.09em;
+            text-transform: uppercase;
+            color: rgba(var(--soft-linen-rgb), 0.72);
+            font-weight: 700;
+        }
+
+        .job-title {
+            margin: 0.45rem 0 0;
+            font-size: 1.35rem;
+            line-height: 1.3;
+            color: var(--soft-linen);
+        }
+
+        .job-description {
+            margin: 0.62rem 0 0.45rem;
+            color: rgba(var(--soft-linen-rgb), 0.9);
+            line-height: 1.45;
+        }
+
+        .career-status-pill {
+            margin: 0;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.42rem;
+            padding: 0.35rem 0.7rem;
+            border-radius: 999px;
+            font-size: 0.75rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .career-status-pill::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: currentColor;
+        }
+
+        .career-status-pill.open {
+            color: #76f5b7;
+            background: rgba(13, 109, 65, 0.32);
+            border: 1px solid rgba(118, 245, 183, 0.36);
+        }
+
+        .career-status-pill.closed {
+            color: #ff9d96;
+            background: rgba(124, 42, 35, 0.38);
+            border: 1px solid rgba(255, 157, 150, 0.36);
+        }
+
+        .job-tags {
+            margin: 0.35rem 0 0.15rem;
+        }
+
+        .job-tags span {
+            background: rgba(var(--soft-linen-rgb), 0.12);
+            border: 1px solid rgba(var(--soft-linen-rgb), 0.28);
+            color: var(--soft-linen);
+            font-weight: 700;
+            box-shadow: 0 4px 12px rgba(var(--carbon-black-rgb), 0.22);
+        }
+
+        .job-tags span.chip-internship {
+            background: rgba(var(--tuscan-sun-rgb), 0.26);
+            border-color: rgba(var(--tuscan-sun-rgb), 0.6);
+            color: #fff0c7;
+        }
+
+        .job-tags span.chip-remote {
+            background: rgba(41, 128, 185, 0.26);
+            border-color: rgba(106, 180, 229, 0.54);
+            color: #d6efff;
+        }
+
+        .job-tags span.chip-fulltime {
+            background: rgba(46, 204, 113, 0.24);
+            border-color: rgba(123, 232, 168, 0.5);
+            color: #d6ffe8;
+        }
+
+        .job-tags span.chip-contract {
+            background: rgba(155, 89, 182, 0.27);
+            border-color: rgba(192, 141, 214, 0.55);
+            color: #f0ddfb;
+        }
+
+        .job-tags span.chip-onsite {
+            background: rgba(231, 76, 60, 0.26);
+            border-color: rgba(244, 141, 130, 0.55);
+            color: #ffe1dd;
+        }
+
+        .career-quick-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 0.5rem;
+            margin-top: 0.55rem;
+        }
+
+        .quick-item {
+            background: rgba(var(--soft-linen-rgb), 0.07);
+            border: 1px solid rgba(var(--soft-linen-rgb), 0.2);
+            border-radius: 10px;
+            padding: 0.5rem;
+        }
+
+        .quick-label {
+            margin: 0;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.07em;
+            color: rgba(var(--soft-linen-rgb), 0.72);
+            font-weight: 700;
+        }
+
+        .quick-value {
+            margin: 0.28rem 0 0;
+            color: var(--soft-linen);
+            font-size: 0.88rem;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        .career-details {
+            margin-top: 0.62rem;
+            border-radius: 10px;
+            border: 1px solid rgba(var(--soft-linen-rgb), 0.2);
+            background: rgba(var(--soft-linen-rgb), 0.08);
+            padding: 0.5rem 0.7rem;
+        }
+
+        .career-details summary {
+            cursor: pointer;
+            color: #ffd884;
+            font-weight: 700;
+        }
+
+        .career-details ul {
+            margin: 0.55rem 0 0;
+            padding-left: 1.2rem;
+        }
+
+        .career-details li {
+            margin-bottom: 0.32rem;
+            color: rgba(var(--soft-linen-rgb), 0.84);
+        }
+
+        .career-job-card .apply-link.btn-primary {
+            background: linear-gradient(135deg, var(--tuscan-sun) 0%, #ffd877 100%);
+            color: var(--carbon-black);
+            border: none;
+        }
+
+        .career-job-card .apply-link.btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 24px rgba(var(--tuscan-sun-rgb), 0.32);
+        }
+
+        .career-job-card .apply-link.btn-secondary {
+            color: rgba(var(--soft-linen-rgb), 0.82);
+            border: 1px solid rgba(var(--soft-linen-rgb), 0.28);
+            background: rgba(var(--soft-linen-rgb), 0.08);
+        }
+
+        .apply-link {
+            width: 100%;
+            text-align: center;
+            border-radius: 10px;
+            padding: 12px 16px;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+        }
+
+        .apply-actions {
+            margin-top: 0.72rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.45rem;
+        }
+
+        .gmail-link {
+            display: inline-block;
+            width: 100%;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 10px;
+            border: 1px dashed rgba(var(--soft-linen-rgb), 0.28);
+            padding: 10px 14px;
+            font-weight: 700;
+            color: var(--soft-linen);
+            background: rgba(var(--soft-linen-rgb), 0.08);
+            transition: all 0.25s ease;
+        }
+
+        .gmail-link:hover {
+            background: rgba(var(--soft-linen-rgb), 0.16);
+            transform: translateY(-2px);
+        }
+
+        .gmail-link.disabled {
+            opacity: 0.55;
+            pointer-events: none;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .apply-link.apply-disabled,
+        .apply-link[aria-disabled='true'] {
+            opacity: 0.75;
+            pointer-events: none;
+            cursor: not-allowed;
+        }
+
+        .job-empty-state,
+        .job-error-state {
+            grid-column: 1 / -1;
+            background: linear-gradient(160deg, rgba(var(--carbon-black-rgb), 0.94), rgba(var(--graphite-rgb), 0.94));
+            border-radius: 12px;
+            padding: 1.4rem;
+            box-shadow: 0 10px 26px rgba(var(--carbon-black-rgb), 0.25);
+            color: rgba(var(--soft-linen-rgb), 0.88);
+            text-align: center;
+        }
+
+        .job-error-state {
+            border-left: 4px solid #a3342b;
+        }
+
+        .career-quote {
+            margin-top: 1.2rem;
+            border: 1px solid rgba(var(--tuscan-sun-rgb), 0.35);
+            box-shadow: 0 10px 24px rgba(var(--carbon-black-rgb), 0.25);
+        }
+
+        .career-quote p {
+            margin: 0;
+            color: rgba(var(--soft-linen-rgb), 0.9);
+            font-size: 1.08rem;
+            line-height: 1.75;
+            font-style: italic;
+            max-width: 78ch;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .career-quote .quote-author {
+            margin-top: 0.8rem;
+            color: var(--tuscan-sun);
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            font-size: 0.82rem;
+        }
+
+        @media (max-width: 768px) {
+            .career-logo {
+                font-size: 1.35rem;
+            }
+
+            .career-navbar .nav-container {
+                gap: 0.9rem;
+            }
+
+            .career-job-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .career-quick-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-nav">Skip to main content</a>
+
+    <nav class="navbar career-navbar">
+        <div class="nav-container">
+            <div class="logo-text career-logo-wrap">
+                <span class="career-logo">Virtual Support Group<span class="career-logo-accent">.studio</span></span>
+            </div>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="../index.html#home" class="nav-link">Home</a></li>
+                <li><a href="../about/team.html" class="nav-link">Team</a></li>
+                <li><a href="../climate-awairness/" class="nav-link">Climate</a></li>
+                <li><a href="../careers/career.html" class="nav-link">Careers</a></li>
+                <li><a href="../index.html#about" class="nav-link">About</a></li>
+                <li><a href="../index.html#services" class="nav-link">Services</a></li>
+                <li><a href="../index.html#portfolio" class="nav-link">Portfolio</a></li>
+                <li><a href="../index.html#testimonials" class="nav-link">Testimonials</a></li>
+                <li><a href="../index.html#faq" class="nav-link">FAQ</a></li>
+                <li><a href="../index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <main id="main-content">
+            <div class="hero-content">
+                <h1>Careers at Virtual Support Group</h1>
+                <p class="tagline">Browse open and closed jobs, internships, remote positions, and other opportunities managed from our official JSON job feed.</p>
+                <div class="hero-buttons">
+                    <a href="#job-listings" class="btn-primary">View Job Listings</a>
+                    <a href="#filters" class="btn-secondary">Filter Roles</a>
+                </div>
+            </div>
+        </main>
+    </section>
+
+    <section id="career-metrics" class="about">
+        <div class="container">
+            <h2>Career Snapshot</h2>
+            <div class="key-points">
+                <div class="point">
+                    <h4>Open Roles</h4>
+                    <p id="metric-open" class="job-metric-value">0</p>
+                </div>
+                <div class="point">
+                    <h4>Internships</h4>
+                    <p id="metric-internship" class="job-metric-value">0</p>
+                </div>
+                <div class="point">
+                    <h4>Remote Roles</h4>
+                    <p id="metric-remote" class="job-metric-value">0</p>
+                </div>
+                <div class="point">
+                    <h4>Closed Roles</h4>
+                    <p id="metric-closed" class="job-metric-value">0</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="filters" class="services">
+        <div class="container">
+            <h2>Filter Jobs</h2>
+            <div class="skills-showcase">
+                <div class="careers-filter-grid">
+                    <div class="filter-field">
+                        <label for="searchInput">Search</label>
+                        <input id="searchInput" type="search" placeholder="Title, department, location" autocomplete="off">
+                    </div>
+                    <div class="filter-field">
+                        <label for="statusFilter">Status</label>
+                        <select id="statusFilter">
+                            <option value="all">All statuses</option>
+                            <option value="open">Open</option>
+                            <option value="closed">Closed</option>
+                        </select>
+                    </div>
+                    <div class="filter-field">
+                        <label for="typeFilter">Job Type</label>
+                        <select id="typeFilter">
+                            <option value="all">All job types</option>
+                        </select>
+                    </div>
+                    <div class="filter-field">
+                        <label for="modeFilter">Work Mode</label>
+                        <select id="modeFilter">
+                            <option value="all">All work modes</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="careers-filter-actions">
+                    <button id="clearFilters" class="btn-secondary" type="button">Reset Filters</button>
+                    <p id="jobsMeta" class="jobs-meta">Loading jobs...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="job-listings" class="services">
+        <div class="container">
+            <h2>Open and Closed Positions</h2>
+            <div id="jobsGrid" class="services-grid" aria-live="polite"></div>
+        </div>
+    </section>
+
+    <section class="contact">
+        <div class="container">
+            <h2>Do not see a perfect match?</h2>
+            <p class="contact-intro">Send your CV and portfolio to <a href="mailto:malikshahzebabd@gmail.com">malikshahzebabd@gmail.com</a>. We review every submission for upcoming opportunities.</p>
+            <div class="cta-section career-quote">
+                <h3>Build Something That Matters</h3>
+                <p id="motivationQuote"></p>
+                <p id="quoteAuthor" class="quote-author">Virtual Support Group</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Virtual Support Group - Careers and Talent Opportunities.</p>
+        </div>
+    </footer>
+
+    <template id="jobCardTemplate">
+        <article class="career-job-card">
+            <div class="career-job-header">
+                <div class="career-job-title-wrap">
+                    <p class="job-id"></p>
+                    <h3 class="job-title"></h3>
+                </div>
+                <p class="career-status-pill"></p>
+            </div>
+
+            <p class="job-description"></p>
+
+            <div class="skill-tags job-tags" aria-label="Role details"></div>
+
+            <div class="career-quick-grid">
+                <div class="quick-item">
+                    <p class="quick-label">Posted</p>
+                    <p class="quick-value posted-date"></p>
+                </div>
+                <div class="quick-item">
+                    <p class="quick-label">Experience</p>
+                    <p class="quick-value experience"></p>
+                </div>
+                <div class="quick-item">
+                    <p class="quick-label">Compensation</p>
+                    <p class="quick-value compensation"></p>
+                </div>
+                <div class="quick-item">
+                    <p class="quick-label">Department</p>
+                    <p class="quick-value job-department"></p>
+                </div>
+            </div>
+
+            <details class="career-details">
+                <summary>Responsibilities</summary>
+                <ul class="responsibilities"></ul>
+            </details>
+
+            <details class="career-details">
+                <summary>Requirements</summary>
+                <ul class="requirements"></ul>
+            </details>
+
+            <div class="apply-actions">
+                <a class="btn-primary apply-link" target="_blank" rel="noopener noreferrer">Apply Now</a>
+                <a class="gmail-link" target="_blank" rel="noopener noreferrer">Open in Gmail</a>
+            </div>
+        </article>
+    </template>
+
+    <script src="careers.js" defer></script>
+</body>
+</html>

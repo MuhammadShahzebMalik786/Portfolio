@@ -1,0 +1,150 @@
+{
+    "company": "Virtual Support Group",
+    "lastUpdated": "2026-03-31",
+    "jobs": [
+        {
+            "id": "VSG-ENG-INT-001",
+            "title": "Frontend Web Developer Intern",
+            "department": "Engineering",
+            "type": "Internship",
+            "workMode": "Remote",
+            "location": "Remote - Worldwide",
+            "status": "Open",
+            "experience": "Entry Level",
+            "postedDate": "2026-03-20",
+            "compensation": "Paid internship",
+            "description": "Support product teams by building responsive UI sections, reusable components, and performance-focused frontend features.",
+            "responsibilities": [
+                "Build and maintain UI components using HTML, CSS, and JavaScript",
+                "Collaborate with designers to turn mockups into production-ready pages",
+                "Fix responsive layout issues across mobile and desktop"
+            ],
+            "requirements": [
+                "Strong understanding of HTML5, CSS3, and modern JavaScript",
+                "Comfortable with Git and GitHub workflows",
+                "Portfolio projects that show real frontend work"
+            ],
+            "applyEmail": "malikshahzebabd@gmail.com"
+        },
+        {
+            "id": "VSG-ENG-FT-002",
+            "title": "AI/ML Engineer",
+            "department": "Applied AI",
+            "type": "Full-time",
+            "workMode": "Remote",
+            "location": "Remote - Pakistan",
+            "status": "Open",
+            "experience": "2+ years",
+            "postedDate": "2026-03-18",
+            "compensation": "Market competitive",
+            "description": "Design and ship practical ML features for automation, prediction, and content intelligence in client projects.",
+            "responsibilities": [
+                "Prototype and productionize ML models for NLP and vision tasks",
+                "Work with engineering to deploy models into web applications",
+                "Track model performance and improve accuracy over time"
+            ],
+            "requirements": [
+                "Experience with Python and at least one ML framework",
+                "Strong fundamentals in data preprocessing and evaluation",
+                "Ability to explain technical choices to non-technical teams"
+            ],
+            "applyEmail": "malikshahzebabd@gmail.com"
+        },
+        {
+            "id": "VSG-MKT-PT-003",
+            "title": "Lead Generation Specialist",
+            "department": "Growth",
+            "type": "Part-time",
+            "workMode": "Hybrid",
+            "location": "Lahore, Pakistan",
+            "status": "Open",
+            "experience": "1+ years",
+            "postedDate": "2026-03-12",
+            "compensation": "Base + performance bonus",
+            "description": "Own prospect research and outreach execution for B2B service clients across global markets.",
+            "responsibilities": [
+                "Research targeted accounts and decision makers",
+                "Prepare outreach lists with verified contact information",
+                "Support campaign performance reporting"
+            ],
+            "requirements": [
+                "Excellent written English communication",
+                "Experience with outreach and CRM tools",
+                "Strong attention to detail in data collection"
+            ],
+            "applyEmail": "malikshahzebabd@gmail.com"
+        },
+        {
+            "id": "VSG-OPS-FT-004",
+            "title": "Operations Associate",
+            "department": "Operations",
+            "type": "Full-time",
+            "workMode": "On-site",
+            "location": "Islamabad, Pakistan",
+            "status": "Closed",
+            "experience": "1-3 years",
+            "postedDate": "2026-02-28",
+            "compensation": "PKR based salary",
+            "description": "Coordinate internal processes, project handoffs, and documentation across cross-functional teams.",
+            "responsibilities": [
+                "Maintain task workflows and delivery tracking",
+                "Support internal documentation and reporting",
+                "Coordinate communication between project teams"
+            ],
+            "requirements": [
+                "Strong organizational and communication skills",
+                "Experience using project tracking tools",
+                "Ability to manage multiple deadlines"
+            ],
+            "applyEmail": "malikshahzebabd@gmail.com"
+        },
+        {
+            "id": "VSG-DES-INT-005",
+            "title": "UI/UX Design Intern",
+            "department": "Design",
+            "type": "Internship",
+            "workMode": "Remote",
+            "location": "Remote - Asia time zones",
+            "status": "Open",
+            "experience": "Entry Level",
+            "postedDate": "2026-03-25",
+            "compensation": "Paid internship",
+            "description": "Help craft clean, conversion-focused interfaces for business websites, dashboards, and product landing pages.",
+            "responsibilities": [
+                "Create wireframes and interface mockups in Figma",
+                "Assist with design system updates and component libraries",
+                "Work with developers to ensure implementation quality"
+            ],
+            "requirements": [
+                "Portfolio with at least 2 UI case studies",
+                "Good understanding of typography and spacing",
+                "Ability to take and apply feedback quickly"
+            ],
+            "applyEmail": "malikshahzebabd@gmail.com"
+        },
+        {
+            "id": "VSG-ENG-CON-006",
+            "title": "n8n Workflow Automation Consultant",
+            "department": "Automation",
+            "type": "Contract",
+            "workMode": "Remote",
+            "location": "Remote - Worldwide",
+            "status": "Closed",
+            "experience": "3+ years",
+            "postedDate": "2026-02-19",
+            "compensation": "Project based",
+            "description": "Build and optimize n8n automations for ecommerce, operations, and customer support workflows.",
+            "responsibilities": [
+                "Design robust automations with reusable workflow patterns",
+                "Integrate APIs and databases into workflow pipelines",
+                "Document deployment and maintenance procedures"
+            ],
+            "requirements": [
+                "Hands-on experience with n8n in production environments",
+                "Ability to debug integration and webhook issues",
+                "Experience with API authentication and data mapping"
+            ],
+            "applyEmail": "malikshahzebabd@gmail.com"
+        }
+    ]
+}

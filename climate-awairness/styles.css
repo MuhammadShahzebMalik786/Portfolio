@@ -59,6 +59,42 @@ body, p, li, a, button {
   align-items: center;
 }
 
+.climate-navbar .nav-container {
+  justify-content: flex-start;
+  gap: 1.25rem;
+}
+
+.climate-navbar .logo-text {
+  margin-right: auto;
+}
+
+.climate-logo {
+  font-family: 'Brush Script MT', cursive, serif;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #e8eddf;
+  letter-spacing: 0.5px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
+}
+
+.climate-logo-accent {
+  color: #f5cb5c;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.climate-navbar .nav-menu {
+  margin-left: auto;
+  gap: 1.5rem;
+  background: rgba(var(--carbon-black-rgb), 0.2);
+  padding: 0.5rem 1.2rem;
+  border-radius: 999px;
+}
+
 .nav-menu {
   display: flex;
   list-style: none;
@@ -71,15 +107,12 @@ body, p, li, a, button {
 .nav-menu a {
   text-decoration: none;
   color: var(--soft-linen);
-  font-weight: 600;
+  font-weight: 500;
   transition: color 0.3s;
-  padding: 0.35rem 0.75rem;
-  border-radius: 999px;
 }
 
 .nav-menu a:hover {
-  background: rgba(var(--soft-linen-rgb), 0.25);
-  color: var(--soft-linen);
+  color: var(--tuscan-sun);
 }
 
 .hamburger {

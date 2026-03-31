@@ -120,36 +120,97 @@
             color: #6b7280;
             line-height: 1.7;
         }
+        .team-navbar {
+            background: linear-gradient(135deg, #f5cb5c 0%, #333533 100%);
+        }
+        .team-navbar .nav-container {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 1.25rem;
+        }
+        .team-navbar .logo-text {
+            margin-right: auto;
+        }
+        .team-logo {
+            font-family: 'Brush Script MT', cursive, serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #e8eddf;
+            letter-spacing: 0.5px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            line-height: 1;
+        }
+        .team-logo-accent {
+            color: #f5cb5c;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+        .team-navbar .nav-menu {
+            margin-left: auto;
+            gap: 1.5rem;
+            background: rgba(36, 36, 35, 0.2);
+            padding: 0.5rem 1.2rem;
+            border-radius: 999px;
+        }
+        .team-about {
+            padding-top: 120px;
+        }
+        .team-callout {
+            text-align: center;
+            margin-top: 4rem;
+            padding: 3rem;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            border-radius: 15px;
+        }
+        .team-callout-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .team-callout-blue {
+            color: #2563eb;
+        }
+        .team-callout-purple {
+            color: #7c3aed;
+        }
+        .team-callout-green {
+            color: #10b981;
+        }
     </style>
 </head>
 <body>
-    <header class="header">
-        <nav class="navbar">
-            <div class="nav-container">
-                <div class="logo">
-                    <a href="../index.html">
-                        <img src="../logo/logo_text.png" alt="Virtual Support Group" class="logo-image" style="height: 40px; width: auto;">
-                    </a>
-                </div>
-                <div class="hamburger" id="hamburger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-                <ul class="nav-menu" id="nav-menu">
-                    <li><a href="../index.html#home" class="nav-link">Home</a></li>
-                    <li><a href="../climate-awairness/" class="nav-link">Climate</a></li>
-                    <li><a href="../index.html#services" class="nav-link">Services</a></li>
-                    <li><a href="../index.html#portfolio" class="nav-link">Portfolio</a></li>
-                    <li><a href="../index.html#about" class="nav-link active">About Us</a></li>
-                    <li><a href="../index.html#contact" class="nav-link">Contact</a></li>
-                </ul>
+    <nav class="navbar team-navbar">
+        <div class="nav-container">
+            <div class="logo-text">
+                <span class="team-logo">Virtual Support Group<span class="team-logo-accent">.studio</span></span>
             </div>
-        </nav>
-    </header>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="../index.html#home" class="nav-link">Home</a></li>
+                <li><a href="../about/team.html" class="nav-link">Team</a></li>
+                <li><a href="../climate-awairness/" class="nav-link">Climate</a></li>
+                <li><a href="../careers/career.html" class="nav-link">Careers</a></li>
+                <li><a href="../index.html#about" class="nav-link">About</a></li>
+                <li><a href="../index.html#services" class="nav-link">Services</a></li>
+                <li><a href="../index.html#portfolio" class="nav-link">Portfolio</a></li>
+                <li><a href="../index.html#testimonials" class="nav-link">Testimonials</a></li>
+                <li><a href="../index.html#faq" class="nav-link">FAQ</a></li>
+                <li><a href="../index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
 
     <main>
-        <section class="about" style="padding-top: 120px;">
+        <section class="about team-about">
             <div class="container">
                 <a href="../index.html" class="back-link">← Back to Home</a>
                 <h1>Meet Our World-Class Expert Team</h1>
@@ -344,19 +405,19 @@
                     </div>
                 </div>
 
-                <div style="text-align: center; margin-top: 4rem; padding: 3rem; background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%); border-radius: 15px;">
+                <div class="team-callout">
                     <h2>Why Our Team Delivers Exceptional Results</h2>
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 2rem;">
+                    <div class="team-callout-grid">
                         <div>
-                            <h3 style="color: #2563eb;">🎯 Proven Expertise</h3>
+                            <h3 class="team-callout-blue">🎯 Proven Expertise</h3>
                             <p>Each team member brings years of specialized experience and a track record of successful project delivery across diverse industries.</p>
                         </div>
                         <div>
-                            <h3 style="color: #7c3aed;">🤝 Collaborative Approach</h3>
+                            <h3 class="team-callout-purple">🤝 Collaborative Approach</h3>
                             <p>Our team works seamlessly together, combining individual strengths to deliver comprehensive solutions that exceed expectations.</p>
                         </div>
                         <div>
-                            <h3 style="color: #10b981;">🚀 Innovation Focus</h3>
+                            <h3 class="team-callout-green">🚀 Innovation Focus</h3>
                             <p>We stay ahead of technology trends, continuously learning and implementing cutting-edge solutions for competitive advantage.</p>
                         </div>
                     </div>
