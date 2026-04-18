@@ -1,0 +1,8 @@
+Team Image Placeholders:
+
+1. murrad-bin-amir.jpeg - TeamLead & Senior Developer Web Scrapping and Ai Expert 
+2. muhammad-shahzeb-malik.jpg - HR & Full-Stack Developer 
+3. syed-qaim-raza.jpg - AI/ML Expert
+6. zohaib-ahmad.jpg - Virtual Assistant & Flutter Developer
+
+Replace these with actual professional headshots (recommended size: 300x300px, format: JPG/PNG) 

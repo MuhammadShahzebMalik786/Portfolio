@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meet Our Expert Team | Virtual Support Group - AI, Development & Virtual Assistant Specialists</title>
+    <meta name="description" content="Meet the expert team behind Virtual Support Group. Our specialists in AI/ML, Flutter development, Shopify management, lead generation, and virtual assistance services are ready to transform your business.">
+    <meta name="keywords" content="virtual support team, AI developers, Flutter experts, Shopify specialists, lead generation experts, virtual assistants, machine learning developers, full-stack developers">
+    <meta name="author" content="Virtual Support Group">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://virtualsupportgroup.studio/about/">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Meet Our Expert Team | Virtual Support Group">
+    <meta property="og:description" content="Meet the expert team behind Virtual Support Group. AI/ML specialists, Flutter developers, and virtual assistants ready to transform your business.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://virtualsupportgroup.studio/about/">
+    <meta property="og:image" content="https://virtualsupportgroup.studio/logo/vsg-logo.png">
+    
+    <link rel="icon" type="image/x-icon" href="../logo/favicon.ico">
+    <link rel="stylesheet" href="team-styles.css">
+    <style>
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 1.75rem;
+            margin: 3rem 0;
+            align-items: stretch;
+        }
+        .team-member {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.18s ease, box-shadow 0.18s ease;
+            will-change: transform;
+        }
+        .team-member:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.14);
+        }
+        .member-image {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            border: 4px solid #f3f4f6;
+            overflow: hidden;
+            background: #f3f4f6;
+        }
+        .member-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .member-name {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #2563eb;
+            margin-bottom: 0.5rem;
+        }
+        .member-role {
+            color: #7c3aed;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+        .member-description {
+            color: #4b5563;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+        .member-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+        .skill-tag {
+            background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+            color: #374151;
+            padding: 0.4rem 0.8rem;
+            border-radius: 25px;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+        .member-expertise {
+            background: #f8fafc;
+            padding: 1rem;
+            border-radius: 10px;
+            margin-top: 1rem;
+            text-align: left;
+        }
+        .expertise-title {
+            font-weight: 600;
+            color: #2563eb;
+            margin-bottom: 0.5rem;
+        }
+        .expertise-title-spaced {
+            margin-top: 0.75rem;
+        }
+        .back-link {
+            display: inline-block;
+            margin: 2rem 0;
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border: 2px solid #2563eb;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        .back-link:hover {
+            background: #2563eb;
+            color: white;
+        }
+        .team-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 4rem;
+            font-size: 1.2rem;
+            color: #6b7280;
+            line-height: 1.7;
+        }
+        .team-page-title {
+            font-size: 2.4rem;
+            line-height: 1.2;
+            text-align: center;
+            margin-bottom: 0.75rem;
+            color: #111827;
+        }
+        .team-navbar {
+            background: linear-gradient(135deg, #f5cb5c 0%, #333533 100%);
+        }
+        .team-navbar .nav-container {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 1.25rem;
+        }
+        .team-navbar .logo-text {
+            margin-right: auto;
+        }
+        .team-logo {
+            font-family: 'Brush Script MT', cursive, serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #e8eddf;
+            letter-spacing: 0.5px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            line-height: 1;
+        }
+        .team-logo-accent {
+            color: #f5cb5c;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+        .team-navbar .nav-menu {
+            margin-left: auto;
+            gap: 1.5rem;
+            background: rgba(36, 36, 35, 0.2);
+            padding: 0.5rem 1.2rem;
+            border-radius: 999px;
+        }
+        .team-about {
+            padding-top: 120px;
+        }
+        .team-callout {
+            text-align: center;
+            margin-top: 4rem;
+            padding: 3rem;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            border-radius: 15px;
+        }
+        .team-callout-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .team-callout-blue {
+            color: #2563eb;
+        }
+        .team-callout-purple {
+            color: #7c3aed;
+        }
+        .team-callout-green {
+            color: #10b981;
+        }
+        @media (max-width: 1200px) {
+            .team-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+        }
+        @media (max-width: 900px) {
+            .team-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+        @media (max-width: 640px) {
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar team-navbar">
+        <div class="nav-container">
+            <div class="logo-text">
+                <span class="team-logo">Virtual Support Group<span class="team-logo-accent">.studio</span></span>
+            </div>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="../index.html#home" class="nav-link">Home</a></li>
+                <li><a href="../about/team.html" class="nav-link">Team</a></li>
+                <li><a href="../climate-awairness/" class="nav-link">Climate</a></li>
+                <li><a href="../careers/career.html" class="nav-link">Careers</a></li>
+                <li><a href="../index.html#about" class="nav-link">About</a></li>
+                <li><a href="../index.html#services" class="nav-link">Services</a></li>
+                <li><a href="../index.html#portfolio" class="nav-link">Portfolio</a></li>
+                <li><a href="../index.html#testimonials" class="nav-link">Testimonials</a></li>
+                <li><a href="../index.html#faq" class="nav-link">FAQ</a></li>
+                <li><a href="../index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <section class="about team-about">
+            <div class="container">
+                <a href="../index.html" class="back-link">← Back to Home</a>
+                <h1 class="team-page-title">Meet Our Expert Team</h1>
+                <div class="team-intro">
+                    <p>Behind Virtual Support Group stands a powerhouse team of industry experts, each bringing years of specialized experience and proven track records. Our diverse talents combine cutting-edge technical skills with deep business understanding, ensuring your projects don't just meet expectations—they exceed them.</p>
+                </div>
+
+                <div class="team-grid">
+                    <div class="team-member">
+                        <div class="member-image">
+                            <img src="../TeamImages/murrad-bin-amir.jpeg" alt="Murrad Bin Amir - Team Lead and Senior Developer">
+                        </div>
+                        <h3 class="member-name">Murrad Bin Amir</h3>
+                        <p class="member-role">Team Lead & Senior Developer — AI, Web Scraping, and Automation</p>
+                        <div class="member-description">
+                            <p>Murrad Bin Amir is a results-oriented technical lead specializing in software development, web scraping, and AI-enabled automation. He leads teams across the full delivery lifecycle, from planning and architecture through implementation and deployment, with a strong focus on practical, high-impact problem solving.</p>
+                        </div>
+                        <div class="member-expertise">
+                            <div class="expertise-title"> Achievements:</div>
+                            <p>• 1st Position - Bahawalpur City<br>
+                            • 2nd Position - Innovista Hackathon (Nationwide)</p>
+                            <div class="expertise-title expertise-title-spaced"> Core Competencies:</div>
+                            <p>• Team Leadership and Delivery Coordination<br>
+                            • Software Development and Architecture<br>
+                            • Web Scraping and Automation (Selenium)<br>
+                            • n8n Automation Workflows<br>
+                            • Python Development<br>
+                            • AI and Data Problem Solving</p>
+                        </div>
+                        <div class="member-skills">
+                            <span class="skill-tag">Selenium</span>
+                            <span class="skill-tag">Web Scraping</span>
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">AI</span>
+                            <span class="skill-tag">Leadership</span>
+                            <span class="skill-tag">Automation</span>
+                        </div>
+                    </div>
+
+                    <div class="team-member">
+                        <div class="member-image">
+                            <img src="../TeamImages/syed Qaim Raza.jpeg" alt="Syed Qaim Raza - AI/ML Expert">
+                        </div>
+                        <h3 class="member-name">Syed Qaim Raza</h3>
+                        <p class="member-role">Senior AI/ML Engineer & Data Scientist</p>
+                        <div class="member-description">
+                            <p>A visionary in artificial intelligence with deep expertise in machine learning algorithms and neural networks. Qaim transforms complex business challenges into intelligent automated solutions, helping companies leverage AI for competitive advantage.</p>
+                        </div>
+                        <div class="member-expertise">
+                            <div class="expertise-title"> Specializations:</div>
+                            <p>• Advanced Machine Learning & Deep Learning<br>
+                            • Natural Language Processing & Computer Vision<br>
+                            • Predictive Analytics & Business Intelligence<br>
+                            • AI Model Optimization & Deployment</p>
+                        </div>
+                        <div class="member-skills">
+                            <span class="skill-tag">TensorFlow</span>
+                            <span class="skill-tag">PyTorch</span>
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">Data Science</span>
+                            <span class="skill-tag">Neural Networks</span>
+                        </div>
+                    </div>
+
+                    <div class="team-member">
+                        <div class="member-image">
+                            <img src="../TeamImages/Muhammad Shahzeb Malik.jpeg" alt="Muhammad Shahzeb Malik - HR">
+                        </div>
+                        <h3 class="member-name">Muhammad Shahzeb Malik</h3>
+                        <p class="member-role">HR & Senior Full-Stack Developer</p>
+                        <div class="member-description">
+                            <p>The driving force behind our technical excellence, Shahzeb combines leadership prowess with hands-on development expertise. His full-stack mastery and problem-solving abilities ensure seamless project delivery from concept to deployment.</p>
+                        </div>
+                        <div class="member-expertise">
+                            <div class="expertise-title"> Leadership & Technical Excellence:</div>
+                            <p>• Cross-platform Mobile App Development (Flutter)<br>
+                            • Full-Stack Web Development & Architecture<br>
+                            • REST API Design & Development<br>
+                            • Backend Development & System Integration<br>
+                            • Database Management & Optimization<br>
+                            • Advanced Data Analysis & Visualization<br>
+                            • Team Leadership & Project Management<br>
+                            • Firebase & Cloud Solutions Integration</p>
+                        </div>
+                        <div class="member-skills">
+                            <span class="skill-tag">Flutter</span>
+                            <span class="skill-tag">Full-Stack Development</span>
+                            <span class="skill-tag">REST API</span>
+                            <span class="skill-tag">Backend Development</span>
+                            <span class="skill-tag">Database Management</span>
+                            <span class="skill-tag">Firebase</span>
+                            <span class="skill-tag">Leadership</span>
+                            <span class="skill-tag">Data Analysis</span>
+                        </div>
+                    </div>
+
+                   
+
+                    
+
+                    <div class="team-member">
+                        <div class="member-image">
+                            <img src="../TeamImages/ZOhaib.jpeg" alt="Zohaib Ahmad - Mobile Developer">
+                        </div>
+                        <h3 class="member-name">Zohaib Ahmad</h3>
+                        <p class="member-role">Mobile Developer & Virtual Assistant</p>
+                        <div class="member-description">
+                            <p>A versatile developer who bridges technical development with administrative excellence. Zohaib's dual expertise in Flutter development and virtual assistance makes him invaluable for projects requiring both technical skills and operational support.</p>
+                        </div>
+                        <div class="member-expertise">
+                            <div class="expertise-title"> Mobile Development & Support:</div>
+                            <p>• Cross-platform Mobile App Development<br>
+                            • Modern Frontend Development & UI/UX<br>
+                            • Comprehensive Virtual Assistant Services<br>
+                            • Client Communication & Support<br>
+                            • Quality Assurance & Testing</p>
+                        </div>
+                        <div class="member-skills">
+                            <span class="skill-tag">Flutter</span>
+                            <span class="skill-tag">Frontend Development</span>
+                            <span class="skill-tag">UI/UX Design</span>
+                            <span class="skill-tag">Virtual Assistant</span>
+                            <span class="skill-tag">Quality Assurance</span>
+                        </div>
+                    </div>
+
+                </div>
+
+                    
+                  
+
+                <div class="team-callout">
+                    <h2>Why Our Team Delivers Exceptional Results</h2>
+                    <div class="team-callout-grid">
+                        <div>
+                            <h3 class="team-callout-blue"> Proven Expertise</h3>
+                            <p>Each team member brings years of specialized experience and a track record of successful project delivery across diverse industries.</p>
+                        </div>
+                        <div>
+                            <h3 class="team-callout-purple"> Collaborative Approach</h3>
+                            <p>Our team works seamlessly together, combining individual strengths to deliver comprehensive solutions that exceed expectations.</p>
+                        </div>
+                        <div>
+                            <h3 class="team-callout-green"> Innovation Focus</h3>
+                            <p>We stay ahead of technology trends, continuously learning and implementing cutting-edge solutions for competitive advantage.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Virtual Support Group - Expert Development & Virtual Assistant Services. Ready to transform your business.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Navigation Toggle
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('nav-menu');
+
+        if (hamburger && navMenu) {
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            });
+
+            // Close mobile menu when clicking on nav links
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburger.classList.remove('active');
+                    navMenu.classList.remove('active');
+                });
+            });
+        }
+
+        // Animate team members on scroll
+        const observerOptions = {
+            threshold: 0.05,
+            rootMargin: '0px 0px -20px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe team members for animation
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.team-member').forEach((el, index) => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(18px)';
+                el.style.transition = `opacity 0.28s ease ${index * 0.04}s, transform 0.28s ease ${index * 0.04}s`;
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
